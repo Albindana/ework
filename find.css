@@ -1,0 +1,308 @@
+/* 
+#EDF6F9 - background
+*/
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: #EDF6F9;
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+header{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid #83C5BE;
+}
+
+.header-main{
+    padding: 30px;
+    width: 70%;
+    justify-content: space-around;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    color: #006D77;  
+}
+
+nav {
+    display: flex;
+    gap: 50px;
+}
+
+.lg{
+    border: none;
+    background-color: transparent;
+    color: #006D77;
+}
+
+.si{
+    border: none;
+    background-color:  #006D77;
+    color: #EDF6F9;
+}
+
+
+/* footer/other */
+
+.copyright {
+    text-align: center;
+}
+
+footer {
+    background-color: #006D77;
+}
+
+.content {
+    color: #83C5BE;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.cp {
+    color: #83C5BE;
+}
+
+h3 a {
+    text-decoration: none;
+    position: relative;
+    color: #006D77;
+}
+
+h3 a {
+    text-decoration: none;
+    position: relative;
+    color: #006D77;
+}
+
+h3 a:not(.current)::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0;
+    height: 2px;
+    background-color: #006D77;
+    transition: width 0.3s ease;
+}
+
+h3 a:not(.current):hover::before {
+    width: 100%;  
+}
+
+.current {
+    color: #83C5BE;
+}
+
+button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    position: relative;
+    font-weight: bold;
+    font-size: 15px;
+    overflow: hidden;
+    transition: background-color 1s ease, color 1s ease;
+}
+
+button:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 3px;
+    background-color: #006D77;
+    transition: width 0.7s ease;
+}
+
+button:hover {
+    background-color: transparent;
+    color: #006D77;
+}
+
+button:hover:before {
+    width: 100%;
+}
+
+.job-container {
+    width: 80%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin: 20px auto;
+}
+
+.job-card:hover {
+    transform: scale(1.05);
+}
+
+.job-card {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+
+    background-color: #EDF6F9;
+    border: 2px solid #006D77;
+    color: #006D77;
+    padding: 15px;
+    transition: transform 0.4s;
+}
+
+.job-card h4 {
+    margin-top: 0;
+}
+
+.job-card p {
+    margin: 10px 0;
+}
+
+.p-info {
+    width: 60%;
+}
+
+.p-img {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:space-between;
+    width: 40%;
+    height: 90%;
+}
+
+.p-img img{
+    width: 80%;
+    height: auto;
+}
+
+.p-img button {
+    margin-top: 10px;
+    border: none;
+    color: #006D77;
+    background-color: #83C5BE;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.p-img button:hover {
+    background-color: #EDF6F9;
+    color: #006D77;
+    transform: scale(1.1);
+}
+
+.search {
+    width: 100%;
+    position: relative;
+    display: flex;
+  }
+  
+  .searchTerm {
+    text-align: center;
+    background-color: #EDF6F9;
+    width: 100%;
+    border: none;
+    border-bottom: 3px solid #83C5BE;
+    padding: 10px;
+    height: 20px;
+    outline: none;
+    color: #006D77;
+    font-size: 20px;
+    transition: border-bottom 0.3s, background-color 0.3s;
+}
+  
+.searchTerm:focus {
+    color: #006D77;
+    background-color: #83C5BE;
+    border-bottom: #006D77 solid 3px;
+}
+
+.searchTerm::placeholder {
+    color: #83C5BE;
+}
+
+.searchButton {
+    width: auto;
+    height: 43px;
+    border: none;
+    background: #006D77;
+    text-align: center;
+    color: #83C5BE;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 20px;
+    display: none;
+}
+
+.searchButton:hover {
+    background-color: #006D77;
+}
+
+.searchTerm:focus + .searchButton {
+    display: block;
+}
+  .wrap{
+    width: 30%;
+    margin-top: 50px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  button a{
+    text-decoration: none;  
+    color: #EDF6F9; 
+    margin: 0;
+    display: inline-block;
+}
+
+button a:hover{ 
+    color: #006D77;
+}
+
+.header-main .profile {
+    list-style-type: none; /* Removes the dot before the list item */
+    display: flex; /* Aligns the items in a row */
+    justify-content: flex-end; /* Aligns the items to the right */
+    align-items: flex-end; /* Aligns the items to the right */
+    gap: 4px; /* Adds space between the items */
+}
+
+.header-main .profile a {
+    text-decoration: none; /* Removes the underline */
+    color: #006D77; /* Changes the text color */
+    
+}
+
+.header-login-a{
+    border: none;
+    background-color:  #006D77;
+    color: #EDF6F9;
+}
+
+.uname{
+    border: none;
+    background-color: transparent;
+    color: #006D77;
+}
+
+.error-message {
+    color: #B22222;
+    font-weight: bold;
+    text-align: center;
+}
+
+.success-message {
+    color: green;
+    font-weight: bold;
+    text-align: center;
+}
