@@ -37,10 +37,7 @@ if (isset($_SESSION["success"])) {
     <title>Document</title>
 </head>
 <body>
-<<<<<<< HEAD
-=======
     <hr>
->>>>>>> main
     <header>
         <div class="header-main">
             <div class="logo"><h1>eWork</h1></div>
@@ -49,10 +46,13 @@ if (isset($_SESSION["success"])) {
                 <h3><a href="post.php">POST JOB</a></h3>
                 <h3><a class="current">FIND JOB</a></h3>
                 <?php
-$job = new Job();
-if (isset($_SESSION["userid"]) && $job->hasPostedJob($_SESSION["userid"])): ?>
-    <h3><a href="applications.php">VIEW APPLICATIONS</a></h3>
-<?php endif; ?>
+        $job = new Job();
+        if (isset($_SESSION["userid"]) && $job->hasPostedJob($_SESSION["userid"])): ?>
+            <h3><a href="applications.php">VIEW APPLICATIONS</a></h3>
+        <?php endif; 
+            if (isset($_SESSION["isAdmin"]) && $_SESSION["isAdmin"] == 1): ?>
+                    <h3><a href="adminPanel.php">ADMIN PANEL</a></h3>
+            <?php endif; ?>
             </nav>
             <div class="profile">
             <?php 
@@ -112,41 +112,23 @@ if (isset($_SESSION["userid"]) && $job->hasPostedJob($_SESSION["userid"])): ?>
                 </div>
                 <div class="p-img">
                     <form action="includes/apply_job.inc.php" method="post">
-<<<<<<< HEAD
-                    <input type="hidden" name="job_id" value="<?php echo $job['job_id']; ?>">
-                    <button type="submit" class="submitBtn">APPLY NOW!</button>
-                    </form>
-                 
-                
-=======
                         <input type="hidden" name="job_id" value="<?php echo $job['job_id']; ?>">
                         <button type="submit" class="submitBtn">APPLY NOW!</button>
                     </form>
                     <?php
                     // Check if the current user is the one who posted the job
-                    if (isset($_SESSION["userid"]) && $_SESSION["userid"] == $job['users_id']): ?>
-=======
                     if (isset($_SESSION["userid"]) && $_SESSION["userid"] == $job['users_id'] or $_SESSION['isAdmin'] == 1): ?>
->>>>>>> semi-branch
                         <form action="includes/delete_job.inc.php" method="post">
                             <input type="hidden" name="job_id" value="<?php echo $job['job_id']; ?>">
                             <button type="submit" class="deleteBtn">DELETE</button>
                         </form>
                     <?php endif; ?>
->>>>>>> main
                 </div>
             </div>
         </div>
     <?php endforeach; ?>
 </div>
-<<<<<<< HEAD
-=======
                 
-        
->>>>>>> main
-
-        
-
     <footer>
         <div class="content">
             <div class="ubt">
@@ -158,7 +140,7 @@ if (isset($_SESSION["userid"]) && $job->hasPostedJob($_SESSION["userid"])): ?>
         </div>
         <div class="cp">
             <div class="copyright">
-                <p>© Copyright - all rights reserved: Albin Dana, Semi Zhuri, Andi Morina</p>
+                <p>Â© Copyright - all rights reserved: Albin Dana, Semi Zhuri, Andi Morina</p>
             </div>
         </div>
     </footer>
