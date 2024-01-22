@@ -25,21 +25,22 @@ class Job extends Dbh {
     }
     public function deleteJob($userId, $jobId)
 {
-    // Check if the job belongs to the user
-    $sql = "SELECT * FROM jobs WHERE users_id = ? AND job_id = ?";
+    // Check if the job belongs to the user or the user is an admin
+    $sql = "SELECT * FROM jobs WHERE job_id = ? AND (users_id = ? OR ? = 1)";
     $stmt = $this->pdo->prepare($sql);
-    $stmt->execute([$userId, $jobId]);
+    $stmt->execute([$jobId, $userId, $_SESSION['isAdmin']]);
     if($stmt->rowCount() > 0) {
-        // If the job belongs to the user, delete the job
+        // If the job belongs to the user or the user is an admin, delete the job
         $sql = "DELETE FROM jobs WHERE job_id = ?";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([$jobId]);
         return true;
     } else {
-        // If the job does not belong to the user, return false
+        // If the job does not belong to the user and the user is not an admin, return false
         return false;
     }
 }
+
 
     
 }
