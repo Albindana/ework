@@ -10,7 +10,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $job = new Job();
     $job->deleteJob($userId, $jobId);
 
-    header("Location: ../find.php"); // Redirect to the post page after deleting the job
+    // Redirect to the appropriate page based on the user's admin status
+    if ($_SESSION['isAdmin'] == 1) {
+        header("Location: ../adminPanel.php");
+    } else {
+        header("Location: ../find.php");
+    }
+    exit();
 } else {
     echo "Form was not submitted correctly.";
 }
+?>

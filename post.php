@@ -32,7 +32,10 @@
                 $job = new Job();
                 if (isset($_SESSION["userid"]) && $job->hasPostedJob($_SESSION["userid"])): ?>
                     <h3><a href="applications.php">VIEW APPLICATIONS</a></h3>
-                <?php endif; ?>
+                <?php endif;
+                if (isset($_SESSION["isAdmin"]) && $_SESSION["isAdmin"] == 1): ?>
+                    <h3><a href="adminPanel.php">ADMIN PANEL</a></h3>
+            <?php endif; ?>
             </nav>
             <div class="profile">
             <?php 
