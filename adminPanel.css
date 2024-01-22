@@ -30,6 +30,12 @@ header{
     background-color:  #0d0e0e;
     color: #ececec;
 }
+.uname:hover{
+    background-color:  #141515;
+}
+.header-login-a:hover{
+    background-color:  #141515;
+}
 h3 a{
     list-style-type: none;
     color: #ececec;

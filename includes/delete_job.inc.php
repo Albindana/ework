@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Redirect to the appropriate page based on the user's admin status
     if ($_SESSION['isAdmin'] == 1) {
-        header("Location: ../adminPanel.php");
+        header("Location: ../find.php");
     } else {
         header("Location: ../find.php");
     }
