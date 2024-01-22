@@ -38,12 +38,29 @@ class Job extends Dbh {
     $stmt = $this->pdo->prepare($sql);
     $stmt->execute([$jobId, $userId, $_SESSION['isAdmin']]);
     if($stmt->rowCount() > 0) {
-        // If the job belongs to the user or the user is an admin, delete the job
->>>>>>> semi-branch
-        $sql = "DELETE FROM jobs WHERE job_id = ?";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([$jobId]);
-        return true;
+        // Start a transaction
+        $this->pdo->beginTransaction();
+
+        try {
+            // Delete associated records in the applications table
+            $stmt = $this->pdo->prepare('DELETE FROM applications WHERE job_id = ?');
+            $stmt->execute([$jobId]);
+
+            // If the job belongs to the user or the user is an admin, delete the job
+            $sql = "DELETE FROM jobs WHERE job_id = ?";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute([$jobId]);
+
+            // Commit the transaction
+            $this->pdo->commit();
+
+            return true;
+        } catch (PDOException $e) {
+            // Roll back the transaction if something failed
+            $this->pdo->rollBack();
+            echo "Error: " . $e->getMessage();
+            return false;
+        }
     } else {
 <<<<<<< HEAD
         // If the job does not belong to the user, return false
@@ -54,9 +71,9 @@ class Job extends Dbh {
     }
 }
 
+
 <<<<<<< HEAD
 =======
 
->>>>>>> semi-branch
     
 }
