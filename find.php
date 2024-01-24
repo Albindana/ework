@@ -99,8 +99,9 @@ if (isset($_SESSION["success"])) {
 
     <div class="jobs">
         
-    <?php foreach ($jobs as $job): ?>
+    
         <div class="job-container">
+        <?php foreach ($jobs as $job): ?>
             <div class="job-card">
                 <div class="p-info">
                     <h3><?php echo htmlspecialchars($job['job_title']); ?></h3>
@@ -125,14 +126,10 @@ if (isset($_SESSION["success"])) {
                     <?php endif; ?>
                 </div>
             </div>
+        <?php endforeach; ?>
         </div>
-    <?php endforeach; ?>
+   
 </div>
-                
-        
-
-        
-
     <footer>
         <div class="content">
             <div class="ubt">
@@ -144,7 +141,7 @@ if (isset($_SESSION["success"])) {
         </div>
         <div class="cp">
             <div class="copyright">
-                <p>© Copyright - all rights reserved: Albin Dana, Semi Zhuri, Andi Morina</p>
+                <p>Â© Copyright - all rights reserved: Albin Dana, Semi Zhuri, Andi Morina</p>
             </div>
         </div>
     </footer>
