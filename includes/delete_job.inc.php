@@ -10,15 +10,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $job = new Job();
     $job->deleteJob($userId, $jobId);
 
-<<<<<<< HEAD
-    header("Location: ../find.php"); // Redirect to the post page after deleting the job
-} else {
-    echo "Form was not submitted correctly.";
-}
-=======
     // Redirect to the appropriate page based on the user's admin status
     if ($_SESSION['isAdmin'] == 1) {
-        header("Location: ../adminPanel.php");
+        header("Location: ../find.php");
     } else {
         header("Location: ../find.php");
     }
@@ -27,4 +21,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo "Form was not submitted correctly.";
 }
 ?>
->>>>>>> semi-branch

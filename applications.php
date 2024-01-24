@@ -7,31 +7,23 @@ $userId = $_SESSION["userid"];
 
 $db = new Dbh();
 $pdo = $db->connect();
-$sql = "SELECT applications.*, users.users_uname, users.users_email, jobs.job_title FROM applications JOIN users ON applications.user_id = users.users_id JOIN jobs ON applications.job_id = jobs.job_id WHERE jobs.users_id = ?";
+$sql = "SELECT * FROM jobs WHERE users_id = ?";
 $stmt = $pdo->prepare($sql);
 $stmt->execute([$userId]);
-$applications = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$jobs = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<<<<<<< HEAD
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Job Applications</title>
-</head>
-<body>
-    <h1>Job Applications</h1>
-    <?php foreach ($applications as $application): ?>
-        <div>
-=======
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="applications.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Job Applications</title>
 
 </head>
@@ -70,21 +62,41 @@ $applications = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
 </header>
-    <h1>Job Applications</h1>
-    <div class="applications-container">
-    <?php foreach ($applications as $application): ?>
-        <div class="application">
->>>>>>> semi-branch
-            <h2><?php echo htmlspecialchars($application['job_title']); ?></h2>
-            <p><strong>Applicant:</strong> <?php echo htmlspecialchars($application['users_uname']); ?></p>
-            <p><strong>Email:</strong> <?php echo htmlspecialchars($application['users_email']); ?></p>
-            <p><strong>Applied At:</strong> <?php echo htmlspecialchars($application['application_date']); ?></p>
-        </div>
-    <?php endforeach; ?>
-<<<<<<< HEAD
-=======
-</div>
+    <h1>Your Jobs</h1>
+        <div class="jobs-container">
+        <?php foreach ($jobs as $job): ?>
+            <div class="job" data-id="<?php echo $job['job_id']; ?>" onclick="showApplicants(<?php echo $job['job_id']; ?>)">
+                <h2><?php echo htmlspecialchars($job['job_title']); ?></h2>
+            </div>
+        <?php endforeach; ?>
+    </div>
+    <div id="applicants-container">
+<script>
+            
+            let activeJob = null;
+            function showApplicants(jobId) {
+                
+                if (activeJob) {
+                    activeJob.classList.remove('active');
+                }
 
->>>>>>> semi-branch
+                const clickedJob = document.querySelector(`.job[data-id="${jobId}"]`);
+                clickedJob.classList.add('active');
+                activeJob = clickedJob;
+
+        
+            $.ajax({
+                url: 'includes/fetch_applicants.inc.php',  // The name of the PHP script
+                type: 'POST',
+                data: { jobId: jobId },
+                success: function(data) {
+                    $('#applicants-container').html(data);
+                }
+            });
+       
+
+    }
+    </script>
+    </div>
 </body>
 </html>

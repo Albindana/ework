@@ -7,6 +7,10 @@
         include 'classes/dbh.classes.php';
     }
     include_once 'classes/job.classes.php';
+    if (isset($_SESSION["error"])) {
+        $error_message = $_SESSION["error"];
+        unset($_SESSION["error"]);
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,14 +36,10 @@
                 $job = new Job();
                 if (isset($_SESSION["userid"]) && $job->hasPostedJob($_SESSION["userid"])): ?>
                     <h3><a href="applications.php">VIEW APPLICATIONS</a></h3>
-<<<<<<< HEAD
-                <?php endif; ?>
-=======
                 <?php endif;
                 if (isset($_SESSION["isAdmin"]) && $_SESSION["isAdmin"] == 1): ?>
                     <h3><a href="adminPanel.php">ADMIN PANEL</a></h3>
             <?php endif; ?>
->>>>>>> semi-branch
             </nav>
             <div class="profile">
             <?php 
@@ -89,6 +89,11 @@
     <form action="includes/insert_job.inc.php" method="post">
         <div class="formHolder">
             <div class="formleft">
+                    <?php if (isset($error_message)): ?>
+                    <div class="error-message">
+                        <?php echo $error_message; ?>
+                    </div>
+                    <?php endif; ?>
                 <input type="text" name="job_title" class="leftinput" placeholder="Job Title"> 
                 <input type="text" name="job_compname" class="leftinput" placeholder="Company Name"> 
                 <textarea name="job_description" class="leftinput" placeholder="Job Description"></textarea>

@@ -23,16 +23,8 @@ class Job extends Dbh {
         $stmt->execute([$userId]);
         return $stmt->rowCount() > 0;
     }
-    public function deleteJob($userId, $jobId)
-{
-<<<<<<< HEAD
-    // Check if the job belongs to the user
-    $sql = "SELECT * FROM jobs WHERE users_id = ? AND job_id = ?";
-    $stmt = $this->pdo->prepare($sql);
-    $stmt->execute([$userId, $jobId]);
-    if($stmt->rowCount() > 0) {
-        // If the job belongs to the user, delete the job
-=======
+    public function deleteJob($userId, $jobId) {
+   
     // Check if the job belongs to the user or the user is an admin
     $sql = "SELECT * FROM jobs WHERE job_id = ? AND (users_id = ? OR ? = 1)";
     $stmt = $this->pdo->prepare($sql);
@@ -61,19 +53,17 @@ class Job extends Dbh {
             echo "Error: " . $e->getMessage();
             return false;
         }
-    } else {
-<<<<<<< HEAD
-        // If the job does not belong to the user, return false
-=======
+    }
+     else {
         // If the job does not belong to the user and the user is not an admin, return false
->>>>>>> semi-branch
         return false;
     }
+
+}
 }
 
 
-<<<<<<< HEAD
-=======
 
-    
-}
+
+
+
