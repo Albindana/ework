@@ -5,8 +5,29 @@
         exit();
 
         include 'classes/dbh.classes.php';
+
+    }
+    if (isset($_SESSION["error"])) {
+        $error_message = $_SESSION["error"];
+        unset($_SESSION["error"]);
+    }
+    if (isset($_SESSION["success"])) {
+        $success_message = $_SESSION["success"];
+        unset($_SESSION["success"]);
     }
     include_once 'classes/job.classes.php';
+    $userid = $_SESSION['userid'];
+$db = new Dbh();
+$pdo = $db->connect();
+$sql = "SELECT * FROM jobs WHERE users_id = ?";
+$stmt = $pdo->prepare($sql);
+$stmt->execute([$userid]);
+$jobs = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -81,46 +102,41 @@
     </section>
 
     <div class="formmaster" id="formmasterDiv">
-    <h1>CREATE YOUR JOB LISTING</h1>
-    <form action="includes/insert_job.inc.php" method="post">
-        <div class="formHolder">
-            <div class="formleft">
-                <input type="text" name="job_title" class="leftinput" placeholder="Job Title"> 
-                <input type="text" name="job_compname" class="leftinput" placeholder="Company Name"> 
-                <textarea name="job_description" class="leftinput" placeholder="Job Description"></textarea>
-                <textarea name="job_skills" class="leftinput" placeholder="Job Skills"></textarea>
-                <input type="number" name="job_income" class="leftinput" placeholder="Salary Range">
-            </div>
-            <div class="formRight">
-                <div class="formRO">
-                    <input type="file">
+        <h1>CREATE YOUR JOB LISTING</h1>
+        <form action="includes/insert_job.inc.php" method="post">
+            <div class="formHolder">
+                <div class="formleft">
+                    <input type="text" name="job_title" class="leftinput" placeholder="Job Title"> 
+                    <input type="text" name="job_compname" class="leftinput" placeholder="Company Name"> 
+                    <textarea name="job_description" class="leftinput" placeholder="Job Description"></textarea>
+                    <textarea name="job_skills" class="leftinput" placeholder="Job Skills"></textarea>
+                    <input type="number" name="job_income" class="leftinput" placeholder="Salary Range">
                 </div>
-            </div>
-        </div> 
-        <button type="submit" class="submitBtn">POST JOB</button>
-    </form>
-</div>
+            </div> 
+            <button type="submit" class="submitBtn">POST JOB</button>
+        </form>
+    </div>
 
  <!-- ================  list of jobs posted  ====================== -->
     <hr style="width: 100%; margin: auto;">
-    <h1 id="p-jobs"><b>Posted Jobs</b></h1>
+    <h1 id="p-jobs"><b>MY JOBS</b></h1>
     <div class="job-container">
+        <?php foreach($jobs as $job){ ?>
         <div class="job-card">
             <div class="p-info">
-                <h3>Job Title 1</h3>
-                <p><strong>Description:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                <p><strong>Company Name:</strong> ubt</p>
-                <p><strong>Location:</strong> City, Country</p>
-                <p><strong>Pay/Income:</strong> $50,000 per year</p>
-                <p><strong>Work Experience:</strong> 200+ hours</p>
-                <p><strong>Academic Requirements:</strong> Bachelor's</p>
+                <h3><?php echo $job['job_title'] ?></h3>
+                <p><strong>Description:</strong> <?php echo htmlspecialchars($job['job_description']); ?></p>
+                <p><strong>Company Name:</strong> <?php echo htmlspecialchars($job['job_compname']); ?></p>
+                <p><strong>Skills:</strong> <?php echo htmlspecialchars($job['job_skills']); ?></p>
+                <p><strong>Pay/Income:</strong> <?php echo htmlspecialchars($job['job_income']); ?></p>             
             </div>
-            <div class="p-img">
-                <img src="images/Church_of_light.jpg"/>
-                <button>Remove listing</button>
-            </div>
-            
+           <form action="includes/delete_job.inc.php" method="post">
+                <input type="hidden" name="job_id" value="<?php echo $job['job_id']; ?>">
+                <button type="submit" onclick="alert('Are you sure that you want to delete this job?')" class="deleteBtn">DELETE</button>
+            </form>
         </div>
+        <?php } ?>
+    </div>
 
     <script src="post.js"></script>
 </body>

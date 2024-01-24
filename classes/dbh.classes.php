@@ -15,6 +15,3 @@ class Dbh {
     }
 
 }
-=========
-
->>>>>>>>> Temporary merge branch 2

@@ -8,9 +8,8 @@
 }
 
 body {
-    background-color: #EDF6F9;
+    background-color: #4a4a4a;
     font-family: 'IBM Plex Sans', sans-serif;
-
 }
 
 header{
@@ -196,7 +195,7 @@ section {
 .formmaster {
     width: 70%;
     margin: 100px auto;
-    display: none;
+    display: flex;
     flex-direction: column;
     justify-content: center;
 }
@@ -278,12 +277,6 @@ select {
     background-size: cover;
     border: #83C5BE solid 4px;
 }
-
-input[type="file"]::file-selector-button {
-    margin-left: 5em;
-    visibility: hidden;
-}
-
 .formRT{
     height: 75%;
     width: 70%;

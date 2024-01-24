@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($_SESSION['isAdmin'] == 1) {
         header("Location: ../adminPanel.php");
     } else {
-        header("Location: ../find.php");
+        header("Location: ../post.php");
     }
     exit();
 } else {

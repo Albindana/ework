@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $job = new Job();
     $job->insertJob($userId, $jobTitle, $jobDescription, $jobSkills, $jobIncome, $jobCompName);
 
-    header("Location: ../index.php"); // Redirect to the home page after inserting the job
+    header("Location: ../post.php"); // Redirect to the home page after inserting the job
 } else {
     // Handle the case where the form wasn't submitted via POST
     echo "Form was not submitted correctly.";
