@@ -7,6 +7,10 @@
         include 'classes/dbh.classes.php';
     }
     include_once 'classes/job.classes.php';
+    if (isset($_SESSION["error"])) {
+        $error_message = $_SESSION["error"];
+        unset($_SESSION["error"]);
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -85,6 +89,11 @@
     <form action="includes/insert_job.inc.php" method="post">
         <div class="formHolder">
             <div class="formleft">
+                    <?php if (isset($error_message)): ?>
+                    <div class="error-message">
+                        <?php echo $error_message; ?>
+                    </div>
+                    <?php endif; ?>
                 <input type="text" name="job_title" class="leftinput" placeholder="Job Title"> 
                 <input type="text" name="job_compname" class="leftinput" placeholder="Company Name"> 
                 <textarea name="job_description" class="leftinput" placeholder="Job Description"></textarea>

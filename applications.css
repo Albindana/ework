@@ -36,21 +36,7 @@ header{
 .header-login-a:hover{
     background-color:  #141515;
 }
-.applications-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start
-}
 
-.application {
-    flex-basis: calc(25% - 130px); 
-    margin: 10px;
-    border: 3px solid #5a5d5f;
-    border-radius: 8px;
-    padding: 10px;
-    box-sizing: border-box;
-    background-color: #141515;
-}
 h3 a{
     list-style-type: none;
     color: #ececec;
@@ -110,3 +96,49 @@ button:hover {
 .admin:hover {
     background-color: rgb(105, 165, 87);
 }
+.jobs-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.job {
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    margin: 7px;
+    border: 2px solid #5a5d5f;
+    border-radius: 50px;
+    padding: 10px; 
+    box-sizing: border-box;
+    background-color: #141515;
+    cursor: pointer;
+    height: 40px; 
+    width: fit-content; 
+    min-width: 60px; 
+    font-size: 0.5em; 
+    transition: background-color 0.3s ease, border-color 0.3s ease; 
+}
+
+.job.active {
+    background-color: rgb(84, 138, 67);
+    border-color: rgb(38, 88, 23); 
+}
+
+#applicants-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start
+}
+
+.application {
+    flex-basis: calc(25% - 130px); 
+    margin: 10px;
+    border: 3px solid #5a5d5f;
+    border-radius: 8px;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: #141515;
+} 
+
+
