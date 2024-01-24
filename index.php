@@ -16,43 +16,6 @@
     <title>Document</title>
 </head>
 <body>
-<<<<<<< HEAD
-    <header>
-        <div class="header-main">
-            <div class="logo"><h1>eWork</h1></div>
-            <nav>
-                <h3><a class="current">HOME</a></h3>
-                <h3><a href="post.php">POST JOB</a></h3>
-                <h3><a href="find.php">FIND JOB</a></h3>
-                <?php
-                    $job = new Job();
-                    if (isset($_SESSION["userid"]) && $job->hasPostedJob($_SESSION["userid"])): ?>
-                        <h3><a href="applications.php">VIEW APPLICATIONS</a></h3>
-                <?php endif; ?>
-
-            </nav>
-            <div class="profile">
-                <?php 
-                    if(isset($_SESSION["useruname"]))
-                    {
-                ?>
-                <li><a href="profile.php"><button class="uname"><?php echo strtoupper($_SESSION["useruname"]); ?></button></a></li>
-                <li><a href="includes/logout.inc.php"><button class="header-login-a">LOGOUT</button></a></li>
-                
-                <?php
-                    }
-                    else
-                    {
-                ?>
-                    <a href="login.php"><button class="lg">LOG IN</button></a>
-                    <a href="signup.php"><button class="si">SIGN UP</button></a>
-                <?php
-                    }
-                ?>
-            </div>
-        </div>
-    </header>
-=======
 <header>
     <div class="header-main">
         <div class="logo"><h1>eWork</h1></div>
@@ -91,7 +54,6 @@
     </div>
 </header>
 
->>>>>>> semi-branch
     <section>
         <div class="sectionText">
             <h1>WORK</h1>

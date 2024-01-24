@@ -139,7 +139,7 @@ if (isset($_SESSION["success"])) {
         </div>
         <div class="cp">
             <div class="copyright">
-                <p>© Copyright - all rights reserved: Albin Dana, Semi Zhuri, Andi Morina</p>
+                <p>Â© Copyright - all rights reserved: Albin Dana, Semi Zhuri, Andi Morina</p>
             </div>
         </div>
     </footer>
