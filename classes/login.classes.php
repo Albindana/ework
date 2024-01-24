@@ -5,11 +5,8 @@ class Login extends Dbh{
 
     protected function getUser($uname, $password) {
         session_start();
-<<<<<<< HEAD
         $stmt = $this->connect()->prepare('SELECT users_password FROM users WHERE users_uname = ? OR users_email = ?;');
-=======
         $stmt = $this->connect()->prepare('SELECT users_password, isAdmin FROM users WHERE users_uname = ? OR users_email = ?;');
->>>>>>> semi-branch
 
         if(!$stmt->execute(array($uname, $uname)))
         {
@@ -60,10 +57,7 @@ class Login extends Dbh{
             session_start();
             $_SESSION["userid"] = $user[0]["users_id"];
             $_SESSION["useruname"] = $user[0]["users_uname"];
-<<<<<<< HEAD
-=======
             $_SESSION["isAdmin"] = $user[0]["isAdmin"];
->>>>>>> semi-branch
             $stmt = null;
             return true;
         }
