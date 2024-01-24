@@ -13,8 +13,8 @@ class Dbh {
             die();
         }
     }
-<<<<<<<<< Temporary merge branch 1
-} 
+
+}
 =========
 
 >>>>>>>>> Temporary merge branch 2
