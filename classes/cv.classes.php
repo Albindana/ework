@@ -12,11 +12,8 @@ class Cv extends Dbh {
     private $degree;
     private $pImage;
 
-    public function __construct($userId) {
+    public function __construct($userId,$motivationalLetter, $skills, $address, $phoneNumber, $country, $city, $degree, $pImage) {
         $this->userId = $userId;
-    }
-
-    public function setDetails($motivationalLetter, $skills, $address, $phoneNumber, $country, $city, $degree, $pImage) {
         $this->motivationalLetter = $motivationalLetter;
         $this->skills = $skills;
         $this->address = $address;
@@ -53,6 +50,5 @@ class Cv extends Dbh {
             $stmt->execute([$this->userId, $this->motivationalLetter, $this->skills, $this->address, $this->phoneNumber, $this->country, $this->city, $this->degree, $this->pImage]);
         }
     }
-    
 }
 ?>
