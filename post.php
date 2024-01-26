@@ -88,7 +88,6 @@ $jobs = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <h1>CREATE YOUR JOB LISTING</h1>
     <form action="includes/insert_job.inc.php" method="post">
         <div class="formHolder">
-            <div class="formleft">
                     <?php if (isset($error_message)): ?>
                     <div class="error-message">
                         <?php echo $error_message; ?>
@@ -99,12 +98,6 @@ $jobs = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <textarea name="job_description" class="leftinput" placeholder="Job Description"></textarea>
                 <textarea name="job_skills" class="leftinput" placeholder="Job Skills"></textarea>
                 <input type="number" name="job_income" class="leftinput" placeholder="Salary Range">
-            </div>
-            <div class="formRight">
-                <div class="formRO">
-                    <input type="file">
-                </div>
-            </div>
         </div> 
         <button type="submit" class="submitBtn">POST JOB</button>
     </form>
@@ -130,7 +123,20 @@ $jobs = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
         <?php } ?>
     </div>
+                <script>
+            window.addEventListener('DOMContentLoaded', (event) => {
+                document.querySelectorAll('textarea').forEach(function(textarea) {
+                    textarea.addEventListener('input', autoResize, false);
+                });
+
+                function autoResize() {
+                    this.style.height = 'auto';
+                    this.style.height = this.scrollHeight + 'px';
+                }
+            });
+            </script>
 
     <script src="post.js"></script>
+    
 </body>
 </html>

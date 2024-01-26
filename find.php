@@ -115,11 +115,12 @@ if (isset($_SESSION["success"])) {
                     <p><strong>Posted by:</strong> <?php echo htmlspecialchars($job['users_uname']); ?></p>
                 </div>
                 <div class="p-img">
+                <?php if (isset($_SESSION["isEmployer"]) && $_SESSION["isEmployer"] != 1): ?>
                     <form action="includes/apply_job.inc.php" method="post">
                         <input type="hidden" name="job_id" value="<?php echo $job['job_id']; ?>">
                         <button type="submit" class="submitBtn">APPLY NOW!</button>
                     </form>
-                    <?php
+                    <?php endif; 
                     // Check if the current user is the one who posted the job
                     if (isset($_SESSION["userid"]) && $_SESSION["userid"] == $job['users_id'] && isset($_SESSION["isEmployer"]) && $_SESSION["isEmployer"] == 1): ?>
                         <form action="includes/delete_job.inc.php" method="post">
