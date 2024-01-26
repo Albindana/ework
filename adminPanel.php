@@ -40,7 +40,7 @@
       <nav id="sidebar">
         <div class="title">Side Menu</div>
         <ul class="list-items">
-            <li><a href="#"><i class="fas fa-home"></i>Home</a></li>
+            <li><a href="index.php"><i class="fas fa-home"></i>Home</a></li>
             <li><a href="#"><i class="fas fa-sliders-h"></i>Clients</a></li>
             <li><a href="#"><i class="fas fa-address-book"></i>Services</a></li>
             <li><a href="#"><i class="fas fa-cog"></i>Settings</a></li>
@@ -80,7 +80,7 @@
        
     </header>
     <div class="users">
-        <!-- <h1>User List</h1> -->
+        <h1>User List</h1>
         <?php
         $stmt = $db->prepare('SELECT * FROM users');
         $stmt->execute();

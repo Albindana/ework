@@ -83,43 +83,8 @@ $jobs = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </div>
         </div>
     </header>
-    <section id="visibleSection">
-        <div class="main">
-            <div class="first">
-                <h1>POST A JOB</h1>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi maxime, amet aliquam quidem incidunt a blanditiis error delectus magni. Quidem odio possimus natus officia optio ducimus voluptas, dolor atque labore.</p>
-            </div>
-            <div class="second">
-                <div class="checkmarks">
-                    <h2>Title</h2>
-                    <h2>Description</h2>
-                    <h2>Requirements</h2>
-                    <h2>Location</h2>
-                    <h2>Pay/Income</h2>
-                </div>
-            </div>
-        </div>
-        <div class="buttona">
-            <p>By clicking "ACCEPT & AGREE" you also accept our <a href="terms.html">terms and conditions</a>. </p>
-            <button class="aabtn" onclick="toggleVisibility()">ACCEPT & AGREE</button>
-        </div>
-    </section>
 
     <div class="formmaster" id="formmasterDiv">
-        <h1>CREATE YOUR JOB LISTING</h1>
-        <form action="includes/insert_job.inc.php" method="post">
-            <div class="formHolder">
-                <div class="formleft">
-                    <input type="text" name="job_title" class="leftinput" placeholder="Job Title"> 
-                    <input type="text" name="job_compname" class="leftinput" placeholder="Company Name"> 
-                    <textarea name="job_description" class="leftinput" placeholder="Job Description"></textarea>
-                    <textarea name="job_skills" class="leftinput" placeholder="Job Skills"></textarea>
-                    <input type="number" name="job_income" class="leftinput" placeholder="Salary Range">
-                </div>
-            </div> 
-            <button type="submit" class="submitBtn">POST JOB</button>
-        </form>
-    </div>
     <h1>CREATE YOUR JOB LISTING</h1>
     <form action="includes/insert_job.inc.php" method="post">
         <div class="formHolder">
