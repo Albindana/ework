@@ -86,11 +86,11 @@
                 <h1>Profile</h1>
                 <form action="includes/change_role.inc.php" method="post">
                     <div class="toggle-container">
+                        <p>Employer Mode</p>
                         <label class="switch">
                         <input type="checkbox" name="employerMode" onchange="this.form.submit()" <?php echo isset($_SESSION['isEmployer']) && $_SESSION['isEmployer'] == 1 ? 'checked' : ''; ?>>
                             <span class="slider round"></span>
                         </label>
-                        <p>Employer Mode</p>
                         <input type="hidden" name="userId" value="<?php echo $_SESSION['userid']; ?>">
                     </div>
                 </form>
