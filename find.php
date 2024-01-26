@@ -108,9 +108,9 @@ if (isset($_SESSION["success"])) {
             <div class="job-card">
                 <div class="p-info">
                     <h3><?php echo htmlspecialchars($job['job_title']); ?></h3>
-                    <p><strong>Description:</strong> <?php echo htmlspecialchars($job['job_description']); ?></p>
+                    <p><strong>Description:</strong> <?php echo htmlspecialchars(mb_strimwidth($job['job_description'], 0, 80, "...")); ?></p>
                     <p><strong>Company Name:</strong> <?php echo htmlspecialchars($job['job_compname']); ?></p>
-                    <p><strong>Skills:</strong> <?php echo htmlspecialchars($job['job_skills']); ?></p>
+                    <p><strong>Skills:</strong> <?php echo htmlspecialchars(mb_strimwidth($job['job_skills'], 0, 80, "...")); ?></p>
                     <p><strong>Pay/Income:</strong> <?php echo htmlspecialchars($job['job_income']); ?></p>
                     <p><strong>Posted by:</strong> <?php echo htmlspecialchars($job['users_uname']); ?></p>
                 </div>
