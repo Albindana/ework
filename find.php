@@ -43,11 +43,14 @@ if (isset($_SESSION["success"])) {
             <div class="logo"><h1>eWork</h1></div>
             <nav>
                 <h3><a href="index.php">HOME</a></h3>
-                <h3><a href="post.php">POST JOB</a></h3>
+                <?php 
+            if (isset($_SESSION["isEmployer"]) && $_SESSION["isEmployer"] == 1): ?>
+            <h3><a href="post.php">POST JOB</a></h3>
+            <?php endif ?>
                 <h3><a class="current">FIND JOB</a></h3>
                 <?php
         $job = new Job();
-        if (isset($_SESSION["userid"]) && $job->hasPostedJob($_SESSION["userid"])): ?>
+        if (isset($_SESSION["userid"]) && $job->hasPostedJob($_SESSION["userid"] && isset($_SESSION["isEmployer"]) && $_SESSION["isEmployer"] == 1)): ?>
             <h3><a href="applications.php">VIEW APPLICATIONS</a></h3>
         <?php endif; 
             if (isset($_SESSION["isAdmin"]) && $_SESSION["isAdmin"] == 1): ?>
@@ -118,7 +121,7 @@ if (isset($_SESSION["success"])) {
                     </form>
                     <?php
                     // Check if the current user is the one who posted the job
-                    if (isset($_SESSION["userid"]) && $_SESSION["userid"] == $job['users_id']): ?>
+                    if (isset($_SESSION["userid"]) && $_SESSION["userid"] == $job['users_id'] && isset($_SESSION["isEmployer"]) && $_SESSION["isEmployer"] == 1): ?>
                         <form action="includes/delete_job.inc.php" method="post">
                             <input type="hidden" name="job_id" value="<?php echo $job['job_id']; ?>">
                             <button type="submit" class="deleteBtn">DELETE</button>

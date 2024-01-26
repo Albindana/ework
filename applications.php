@@ -4,6 +4,10 @@ include 'classes/dbh.classes.php';
 include 'classes/job.classes.php';
 
 $userId = $_SESSION["userid"];
+if ($_SESSION['isEmployer'] != 1) {
+    header("location: index.php");
+    exit();
+}
 
 $db = new Dbh();
 $pdo = $db->connect();

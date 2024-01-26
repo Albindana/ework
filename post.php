@@ -7,6 +7,10 @@
         include 'classes/dbh.classes.php';
 
     }
+    if ($_SESSION['isEmployer'] != 1) {
+        header("location: index.php");
+        exit();
+    }
     if (isset($_SESSION["error"])) {
         $error_message = $_SESSION["error"];
         unset($_SESSION["error"]);

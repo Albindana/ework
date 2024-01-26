@@ -87,7 +87,7 @@
         ?>
         <div class="user-table">
             <table>
-                <tr><th>ID</th><th>Username</th><th>Password</th><th>Email</th><th>Admin</th><th>Action</th></tr>
+                <tr><th>ID</th><th>Username</th><th>Password</th><th>Email</th><th>Admin</th><th>Employer</th><th>Action</th></tr>
                 <?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
                     <tr>
                         <td><?php echo htmlspecialchars($row['users_id']); ?></td>
@@ -99,6 +99,7 @@
                         $truncatedEmail = mb_strimwidth($email, 0, 25, "..."); 
                         echo "<td>" . $truncatedEmail . "</td>";?>
                         <td><?php echo ($row['isAdmin'] == 1 ? "Yes" : "No"); ?></td>
+                        <td><?php echo ($row['isEmployer'] == 1 ? "Yes" : "No"); ?></td>
                         <td>
                             <form action='includes/make_admin.inc.php' method='post'>
                                 <input type='hidden' name='userId' value='<?php echo htmlspecialchars($row['users_id']); ?>'>

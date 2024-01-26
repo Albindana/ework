@@ -29,7 +29,10 @@
             <div class="logo"><h1>eWork</h1></div>
             <nav>
                 <h3><a href="index.php">HOME</a></h3>
-                <h3><a href="post.php">POST JOB</a></h3>
+                <?php 
+            if (isset($_SESSION["isEmployer"]) && $_SESSION["isEmployer"] == 1): ?>
+            <h3><a href="post.php">POST JOB</a></h3>
+            <?php endif ?>
                 <h3><a href="find.php">FIND JOB</a></h3>
             </nav>
             <div class="profile">
