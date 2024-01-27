@@ -18,9 +18,6 @@ if (isset($_SESSION["success"])) {
     $success_message = $_SESSION["success"];
     unset($_SESSION["success"]);
 }
-
-
-
 ?>
 
 
@@ -37,7 +34,6 @@ if (isset($_SESSION["success"])) {
     <title>Document</title>
 </head>
 <body>
-    <hr>
     <header>
         <div class="header-main">
             <div class="logo"><h1>eWork</h1></div>

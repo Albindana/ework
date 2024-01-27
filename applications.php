@@ -36,9 +36,10 @@ $jobs = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="header-main">
         <div class="logo"><h1>eWork</h1></div>
         <nav>
-            <h3><a class="current">HOME</a></h3>
+            <h3><a href="index.php">HOME</a></h3>
             <h3><a href="post.php">POST JOB</a></h3>
             <h3><a href="find.php">FIND JOB</a></h3>
+            <h3><a class="current">APPLICATIONS</a></h3>
             <?php
                 $job = new Job();
                 if (isset($_SESSION["isAdmin"]) && $_SESSION["isAdmin"] == 1): ?>

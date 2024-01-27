@@ -55,9 +55,9 @@ $jobs = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <h3><a href="find.php">FIND JOB</a></h3>
                 <?php
                 $job = new Job();
-                if (isset($_SESSION["userid"]) && $job->hasPostedJob($_SESSION["userid"])): ?>
+                if (isset($_SESSION["userid"]) && $job->hasPostedJob($_SESSION["userid"] && isset($_SESSION["isEmployer"]) && $_SESSION["isEmployer"] == 1)): ?>
                     <h3><a href="applications.php">VIEW APPLICATIONS</a></h3>
-                <?php endif;
+                <?php endif; 
                 if (isset($_SESSION["isAdmin"]) && $_SESSION["isAdmin"] == 1): ?>
                     <h3><a href="adminPanel.php">ADMIN PANEL</a></h3>
             <?php endif; ?>

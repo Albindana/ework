@@ -81,7 +81,7 @@ button {
     outline: none;
     margin-bottom: 3px;
     transition: transform .2s;
-    
+    font-family: 'IBM Plex Sans', sans-serif;
     font-weight: bold;
      
 }

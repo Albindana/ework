@@ -264,6 +264,7 @@ button {
     font-size: 15px;
     overflow: hidden;
     transition: background-color 1s ease, color 1s ease;
+    font-family: 'IBM Plex Sans', sans-serif;
 }
 
 button:before {
@@ -310,4 +311,5 @@ button:hover:before {
     border: none;
     background-color: transparent;
     color: #006D77;
+    font-family: 'IBM Plex Sans', sans-serif;
 }

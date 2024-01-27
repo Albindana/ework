@@ -52,9 +52,10 @@
                 <input type="text" name="uname" placeholder="Username" required><br>
                 <input type="password" name="password" placeholder="Password" required><br>
                 <input type="submit" name ="submit" value="Log In">
-                <p>Don't have an account? <a href="signup.php">Register</a></p>
+                <p>Don't have an account? <a href="signup.php">Register here</a> </p>
             </form>
         </div>
+    </div>
         
 
     <footer>
