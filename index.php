@@ -96,7 +96,7 @@
         </div>
         <div class="third-at">
             <p>So if you are capable of working, eWork is for you. Join now and be discovered!</p>
-            <button class="contact">JOIN NOW</button>
+            <button class="contact" href="signup.php"><a class="signupi" href="signup.php">JOIN NOW</a></button>
         </div>
     </div>
     <div class="articleThree">
