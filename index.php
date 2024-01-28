@@ -42,6 +42,7 @@
                 if(isset($_SESSION["useruname"]))
                 {
             ?>
+            <li><a href="cv.php"><button class="uname">My CV</button></a></li>
             <li><a href="profile.php"><button class="uname"><?php echo strtoupper($_SESSION["useruname"]); ?></button></a></li>
             <li><a href="includes/logout.inc.php"><button class="header-login-a">LOGOUT</button></a></li>
             
