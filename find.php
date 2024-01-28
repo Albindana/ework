@@ -18,9 +18,6 @@ if (isset($_SESSION["success"])) {
     $success_message = $_SESSION["success"];
     unset($_SESSION["success"]);
 }
-
-
-
 ?>
 
 
@@ -37,17 +34,19 @@ if (isset($_SESSION["success"])) {
     <title>Document</title>
 </head>
 <body>
-    <hr>
     <header>
         <div class="header-main">
             <div class="logo"><h1>eWork</h1></div>
             <nav>
                 <h3><a href="index.php">HOME</a></h3>
-                <h3><a href="post.php">POST JOB</a></h3>
+                <?php 
+            if (isset($_SESSION["isEmployer"]) && $_SESSION["isEmployer"] == 1): ?>
+            <h3><a href="post.php">POST JOB</a></h3>
+            <?php endif ?>
                 <h3><a class="current">FIND JOB</a></h3>
                 <?php
         $job = new Job();
-        if (isset($_SESSION["userid"]) && $job->hasPostedJob($_SESSION["userid"])): ?>
+        if (isset($_SESSION["userid"]) && $job->hasPostedJob($_SESSION["userid"] && isset($_SESSION["isEmployer"]) && $_SESSION["isEmployer"] == 1)): ?>
             <h3><a href="applications.php">VIEW APPLICATIONS</a></h3>
         <?php endif; 
             if (isset($_SESSION["isAdmin"]) && $_SESSION["isAdmin"] == 1): ?>
@@ -105,20 +104,21 @@ if (isset($_SESSION["success"])) {
             <div class="job-card">
                 <div class="p-info">
                     <h3><?php echo htmlspecialchars($job['job_title']); ?></h3>
-                    <p><strong>Description:</strong> <?php echo htmlspecialchars($job['job_description']); ?></p>
+                    <p><strong>Description:</strong> <?php echo htmlspecialchars(mb_strimwidth($job['job_description'], 0, 80, "...")); ?></p>
                     <p><strong>Company Name:</strong> <?php echo htmlspecialchars($job['job_compname']); ?></p>
-                    <p><strong>Skills:</strong> <?php echo htmlspecialchars($job['job_skills']); ?></p>
+                    <p><strong>Skills:</strong> <?php echo htmlspecialchars(mb_strimwidth($job['job_skills'], 0, 80, "...")); ?></p>
                     <p><strong>Pay/Income:</strong> <?php echo htmlspecialchars($job['job_income']); ?></p>
                     <p><strong>Posted by:</strong> <?php echo htmlspecialchars($job['users_uname']); ?></p>
                 </div>
                 <div class="p-img">
+                <?php if (isset($_SESSION["isEmployer"]) && $_SESSION["isEmployer"] != 1): ?>
                     <form action="includes/apply_job.inc.php" method="post">
                         <input type="hidden" name="job_id" value="<?php echo $job['job_id']; ?>">
                         <button type="submit" class="submitBtn">APPLY NOW!</button>
                     </form>
-                    <?php
+                    <?php endif; 
                     // Check if the current user is the one who posted the job
-                    if (isset($_SESSION["userid"]) && $_SESSION["userid"] == $job['users_id']): ?>
+                    if (isset($_SESSION["userid"]) && $_SESSION["userid"] == $job['users_id'] && isset($_SESSION["isEmployer"]) && $_SESSION["isEmployer"] == 1): ?>
                         <form action="includes/delete_job.inc.php" method="post">
                             <input type="hidden" name="job_id" value="<?php echo $job['job_id']; ?>">
                             <button type="submit" class="deleteBtn">DELETE</button>

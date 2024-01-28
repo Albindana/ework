@@ -7,6 +7,10 @@
         include 'classes/dbh.classes.php';
 
     }
+    if ($_SESSION['isEmployer'] != 1) {
+        header("location: index.php");
+        exit();
+    }
     if (isset($_SESSION["error"])) {
         $error_message = $_SESSION["error"];
         unset($_SESSION["error"]);
@@ -51,9 +55,9 @@ $jobs = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <h3><a href="find.php">FIND JOB</a></h3>
                 <?php
                 $job = new Job();
-                if (isset($_SESSION["userid"]) && $job->hasPostedJob($_SESSION["userid"])): ?>
+                if (isset($_SESSION["userid"]) && $job->hasPostedJob($_SESSION["userid"] && isset($_SESSION["isEmployer"]) && $_SESSION["isEmployer"] == 1)): ?>
                     <h3><a href="applications.php">VIEW APPLICATIONS</a></h3>
-                <?php endif;
+                <?php endif; 
                 if (isset($_SESSION["isAdmin"]) && $_SESSION["isAdmin"] == 1): ?>
                     <h3><a href="adminPanel.php">ADMIN PANEL</a></h3>
             <?php endif; ?>
@@ -79,47 +83,11 @@ $jobs = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </div>
         </div>
     </header>
-    <section id="visibleSection">
-        <div class="main">
-            <div class="first">
-                <h1>POST A JOB</h1>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi maxime, amet aliquam quidem incidunt a blanditiis error delectus magni. Quidem odio possimus natus officia optio ducimus voluptas, dolor atque labore.</p>
-            </div>
-            <div class="second">
-                <div class="checkmarks">
-                    <h2>Title</h2>
-                    <h2>Description</h2>
-                    <h2>Requirements</h2>
-                    <h2>Location</h2>
-                    <h2>Pay/Income</h2>
-                </div>
-            </div>
-        </div>
-        <div class="buttona">
-            <p>By clicking "ACCEPT & AGREE" you also accept our <a href="terms.html">terms and conditions</a>. </p>
-            <button class="aabtn" onclick="toggleVisibility()">ACCEPT & AGREE</button>
-        </div>
-    </section>
 
     <div class="formmaster" id="formmasterDiv">
-        <h1>CREATE YOUR JOB LISTING</h1>
-        <form action="includes/insert_job.inc.php" method="post">
-            <div class="formHolder">
-                <div class="formleft">
-                    <input type="text" name="job_title" class="leftinput" placeholder="Job Title"> 
-                    <input type="text" name="job_compname" class="leftinput" placeholder="Company Name"> 
-                    <textarea name="job_description" class="leftinput" placeholder="Job Description"></textarea>
-                    <textarea name="job_skills" class="leftinput" placeholder="Job Skills"></textarea>
-                    <input type="number" name="job_income" class="leftinput" placeholder="Salary Range">
-                </div>
-            </div> 
-            <button type="submit" class="submitBtn">POST JOB</button>
-        </form>
-    </div>
     <h1>CREATE YOUR JOB LISTING</h1>
     <form action="includes/insert_job.inc.php" method="post">
         <div class="formHolder">
-            <div class="formleft">
                     <?php if (isset($error_message)): ?>
                     <div class="error-message">
                         <?php echo $error_message; ?>
@@ -130,12 +98,6 @@ $jobs = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <textarea name="job_description" class="leftinput" placeholder="Job Description"></textarea>
                 <textarea name="job_skills" class="leftinput" placeholder="Job Skills"></textarea>
                 <input type="number" name="job_income" class="leftinput" placeholder="Salary Range">
-            </div>
-            <div class="formRight">
-                <div class="formRO">
-                    <input type="file">
-                </div>
-            </div>
         </div> 
         <button type="submit" class="submitBtn">POST JOB</button>
     </form>
@@ -149,9 +111,9 @@ $jobs = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <div class="job-card">
             <div class="p-info">
                 <h3><?php echo $job['job_title'] ?></h3>
-                <p><strong>Description:</strong> <?php echo htmlspecialchars($job['job_description']); ?></p>
+                <p><strong>Description:</strong> <?php echo htmlspecialchars(mb_strimwidth($job['job_description'], 0, 80, "...")); ?></p>
                 <p><strong>Company Name:</strong> <?php echo htmlspecialchars($job['job_compname']); ?></p>
-                <p><strong>Skills:</strong> <?php echo htmlspecialchars($job['job_skills']); ?></p>
+                <p><strong>Skills:</strong> <?php echo htmlspecialchars(mb_strimwidth($job['job_skills'], 0, 80, "...")); ?></p>
                 <p><strong>Pay/Income:</strong> <?php echo htmlspecialchars($job['job_income']); ?></p>             
             </div>
            <form action="includes/delete_job.inc.php" method="post">
@@ -161,7 +123,21 @@ $jobs = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
         <?php } ?>
     </div>
+                <script>
+            window.addEventListener('DOMContentLoaded', (event) => {
+                document.querySelectorAll('textarea').forEach(function(textarea) {
+                    textarea.addEventListener('input', autoResize, false);
+                });
+
+                function autoResize() {
+                    this.style.height = 'auto';
+                    this.style.height = this.scrollHeight + 'px';
+                }
+            });
+            </script>
 
     <script src="post.js"></script>
+    
 </body>
 </html>
+

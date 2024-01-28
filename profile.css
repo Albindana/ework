@@ -43,6 +43,7 @@ nav {
     border: none;
     background-color: transparent;
     color: #006D77;
+    font-family: 'IBM Plex Sans', sans-serif;
 }
 
 .si{
@@ -158,6 +159,7 @@ button {
     font-size: 15px;
     overflow: hidden;
     transition: background-color 1s ease, color 1s ease;
+    font-family: 'IBM Plex Sans', sans-serif;
 }
 
 button:before {
@@ -301,3 +303,81 @@ form input[type="submit"]:hover {
     border: 1px solid #ccc;
     border-radius: 5px;
 }
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-container h1 {
+    margin-right: auto;
+}
+
+.toggle-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.toggle-container p {
+    font-weight: bold;
+    color: #006D77; /* Make the text bold */
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px; /* Make the slider smaller */
+    height: 20px;
+}
+
+.switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px; /* Adjust to match the new slider size */
+    width: 16px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #008000; /* Darker green when active */
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #008000; /* Darker green when active */
+}
+
+input:checked + .slider:before {
+    transform: translateX(20px); /* Adjust to match the new slider size */
+}
+
+.slider.round {
+    border-radius: 20px; /* Adjust to match the new slider size */
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+

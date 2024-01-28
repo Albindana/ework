@@ -4,6 +4,10 @@ include 'classes/dbh.classes.php';
 include 'classes/job.classes.php';
 
 $userId = $_SESSION["userid"];
+if ($_SESSION['isEmployer'] != 1) {
+    header("location: index.php");
+    exit();
+}
 
 $db = new Dbh();
 $pdo = $db->connect();
@@ -35,6 +39,7 @@ $jobs = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <h3><a href="index.php">HOME</a></h3>
             <h3><a href="post.php">POST JOB</a></h3>
             <h3><a href="find.php">FIND JOB</a></h3>
+            <h3><a class="current">APPLICATIONS</a></h3>
             <?php
                 $job = new Job();
                 if (isset($_SESSION["isAdmin"]) && $_SESSION["isAdmin"] == 1): ?>

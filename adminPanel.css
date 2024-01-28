@@ -49,6 +49,8 @@ body {
 }
 h1 {
     font-size: 2em;
+    text-align: center;
+    margin: 10px;
 }
 table {
     margin: 0 auto;
@@ -79,7 +81,7 @@ button {
     outline: none;
     margin-bottom: 3px;
     transition: transform .2s;
-    
+    font-family: 'IBM Plex Sans', sans-serif;
     font-weight: bold;
      
 }
@@ -90,6 +92,7 @@ button:hover {
 
 .delete {
     background-color: rgb(116, 24, 24);
+    color: white;
 }
 
 .delete:hover {
@@ -98,6 +101,7 @@ button:hover {
 
 .admin {
     background-color: rgb(84, 138, 67);
+    color: white;
 }
 
 .admin:hover {

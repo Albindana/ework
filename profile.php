@@ -8,7 +8,7 @@
         $error_message = $_SESSION["error"];
         unset($_SESSION["error"]);
     }
-
+    
     // Include your database connection file here
     include 'classes/dbh.classes.php';
    
@@ -45,13 +45,19 @@
             <div class="logo"><h1>eWork</h1></div>
             <nav>
                 <h3><a href="index.php">HOME</a></h3>
-                <h3><a href="post.php">POST JOB</a></h3>
+                <?php 
+            if (isset($_SESSION["isEmployer"]) && $_SESSION["isEmployer"] == 1): ?>
+            <h3><a href="post.php">POST JOB</a></h3>
+            <?php endif ?>
                 <h3><a href="find.php">FIND JOB</a></h3>
                 <?php
                 $job = new Job();
-                if (isset($_SESSION["userid"]) && $job->hasPostedJob($_SESSION["userid"])): ?>
+                if (isset($_SESSION["userid"]) && $job->hasPostedJob($_SESSION["userid"] && isset($_SESSION["isEmployer"]) && $_SESSION["isEmployer"] == 1)): ?>
                     <h3><a href="applications.php">VIEW APPLICATIONS</a></h3>
-                <?php endif; ?>
+                <?php endif; 
+                if (isset($_SESSION["isAdmin"]) && $_SESSION["isAdmin"] == 1): ?>
+                    <h3><a href="adminPanel.php">ADMIN PANEL</a></h3>
+            <?php endif; ?>
             </nav>
             <div class="profile">
                 <?php 
@@ -78,6 +84,18 @@
             <div class="container">
                     <div class="form-container">
                 <h1>Profile</h1>
+                <form action="includes/change_role.inc.php" method="post">
+                    <div class="toggle-container">
+                        <p>Employer Mode</p>
+                        <label class="switch">
+                        <input type="checkbox" name="employerMode" onchange="this.form.submit()" <?php echo isset($_SESSION['isEmployer']) && $_SESSION['isEmployer'] == 1 ? 'checked' : ''; ?>>
+                            <span class="slider round"></span>
+                        </label>
+                        <input type="hidden" name="userId" value="<?php echo $_SESSION['userid']; ?>">
+                    </div>
+                </form>
+
+
 
                 <h2>Your Information</h2>
               
@@ -104,20 +122,4 @@
                 
             </body>
 
-<footer>
-    
-        <div class="content">
-            <div class="ubt">
-                <p>Ky projekt u punua per lenden "Inxhinieri e Kerkesave Softuerike"</p>
-            </div>
-            <div class="about">
-                <a>About us</a>
-            </div>
-        </div>
-        <div class="cp">
-            <div class="copyright">
-                <p>© Copyright - all rights reserved: Albin Dana, Semi Zhuri, Andi Morina</p>
-            </div>
-        </div>
-    </footer>
 </html>
