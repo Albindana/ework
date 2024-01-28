@@ -1,0 +1,16 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container{
+    /* margin: 50px; */
+    border: 1px solid black;
+    border-radius: 15px;
+}
+.first{
+    border-bottom: 1px solid black;
+}
+.second{
+    border-bottom: 1px solid black;
+}
