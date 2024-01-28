@@ -2,13 +2,24 @@
 #EDF6F9 - background
 */
 
+:root {
+    --background-color: #f4fff4;
+    --border-color: #18FF27;
+    --text-color: #18BA27;
+    --button-bg: #007bff;
+    --button-hover-bg: transparent;
+    --button-hover-text: #18BA27;
+    --big-text-color: #006c0b;
+    --btn-background: #cdffcd;
+}
+
 *{
     padding: 0;
     margin: 0;
 }
 
 body {
-    background-color: #EDF6F9;
+    background-color: var(--background-color);
     font-family: 'IBM Plex Sans', sans-serif;
     overflow-x: hidden;
 }
@@ -17,7 +28,7 @@ header{
     width: 100%;
     display: flex;
     justify-content: center;
-    border-bottom: 1px solid #83C5BE;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .header-main{
@@ -27,7 +38,7 @@ header{
     display: flex;
     text-align: center;
     align-items: center;
-    color: #006D77;  
+    color: var(--text-color);  
 }
 
 nav {
@@ -38,25 +49,25 @@ nav {
 .lg{
     border: none;
     background-color: transparent;
-    color: #006D77;
+    color: var(--text-color);
 }
 
 .si{
     border: none;
     background-color:  #006D77;
-    color: #EDF6F9;
+    color: var(--background-color)
 }
 
 h3 a {
     text-decoration: none;
     position: relative;
-    color: #006D77;
+    color: var(--text-color);
 }
 
 h3 a {
     text-decoration: none;
     position: relative;
-    color: #006D77;
+    color: var(--text-color);
 }
 
 h3 a:not(.current)::before {
@@ -66,7 +77,7 @@ h3 a:not(.current)::before {
     bottom: -6px;
     width: 0;
     height: 2px;
-    background-color: #006D77;
+    background-color: var(--text-color);
     transition: width 0.3s ease;
 }
 
@@ -75,14 +86,14 @@ h3 a:not(.current):hover::before {
 }
 
 .current {
-    color: #83C5BE;
+    color: #baffba;
 }
 
 button {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #83C5BE;
-    color: #fff;
+    background-color: var(--big-text-color);
+    color: var(--btn-background);
     text-decoration: none;
     position: relative;
     font-weight: bold;
@@ -92,6 +103,10 @@ button {
     font-family: 'IBM Plex Sans', sans-serif;
 }
 
+.deleteBtn {
+    text-decoration: none;
+}
+
 button:before {
     content: '';
     position: absolute;
@@ -99,13 +114,13 @@ button:before {
     bottom: 0;
     width: 0;
     height: 3px;
-    background-color: #006D77;
+    background-color: #006c0b;
     transition: width 0.7s ease;
 }
 
 button:hover {
     background-color: transparent;
-    color: #006D77;
+    color: #006c0b;
 }
 
 button:hover:before {
@@ -135,11 +150,11 @@ section {
 
 .first h1 {
     font-size: 40px;
-    color: #006D77;
+    color: var(--text-color);
 }
 
 .first p {
-    color: #006D77;
+    color: var(--text-color);
 }
 
 .checkmarks {
@@ -149,7 +164,7 @@ section {
 }
 
 .checkmarks h2 {
-    color: #006D77;
+    color: var(--text-color);
 }
 
 .buttona {
@@ -159,7 +174,7 @@ section {
 
 .aabtn {
     margin-top: 40px;
-    background-color: #006D77;
+    background-color: var(--text-color);
     display: inline-block;
     padding: 30px 60px;
     color: #EDF6F9;
@@ -179,13 +194,13 @@ section {
     bottom: 0;
     width: 0;
     height: 3px;
-    background-color: #006D77;
+    background-color: var(--text-color);
     transition: width 0.7s ease;
 }   
 
 .aabtn:hover {
-    background-color: #83C5BE;
-    color: #006D77;
+    background-color: var(--background-color);
+    color: var(--text-color);
 }
 
 .aabtn:hover:before {
@@ -203,7 +218,7 @@ section {
 }
 
 .formmaster h1 {
-    color: #006D77;
+    color: var(--text-color);
     padding: 0 10px;
     font-size: 40px;
     align-self: center;
@@ -230,20 +245,20 @@ form {
 
 .leftinput {
     margin-bottom: 30px;
-    color: #006D77;
+    color: var(--text-color);
     padding: 20px;
     font-size: 20px;
     width: 100%;
     height: 30px;
-    border: 2px solid #83C5BE; 
+    border: 2px solid var(--border-color); 
     border-radius: 10px; 
-    background-color: #EDF6F9;
+    background-color: var(--btn-background);
     transition: border 0.1s, background-color 0.1s;
     resize: none; 
 }
 
 .leftinput::placeholder {
-    color: #83C5BE;
+    color: var(--text-color);
     font-size: 20px;
 }
 
@@ -254,10 +269,9 @@ form {
 .leftinput:focus {
     outline: none;
     text-decoration: none;
-    border-color: #1b747c;
-    background-color: #dff1f0;
+    border-color: var(--border-color);
+    background-color: #93fc93;
 }
-
 
 select {
     width: 100%;
@@ -275,10 +289,9 @@ select {
 
 .submitBtn {
     display: flex;
-    color: #006D77;
-    background-color: #83C5BE;
-    border: none;
-    border-radius: 10px; 
+    color: var(--text-color);
+    background-color: var(--btn-background);
+    border: none; 
     font-size: 20px; 
     margin: 0 auto;
     align-self: flex-end; 
@@ -288,7 +301,7 @@ select {
 #p-jobs {
     text-align: center;
     margin-top: 80px;
-    color: #006D77;
+    color: var(--text-color);
     font-size: 40px;
 }
 
@@ -307,9 +320,9 @@ select {
     flex-direction: column;
     justify-content: flex-start; 
     align-items: flex-start; 
-    background-color: #EDF6F9;
-    border: 2px solid #006D77;
-    color: #006D77;
+    background-color: var(--background-color);
+    border: 2px solid var(--border-color);
+    color: var(--text-color);
     padding: 10px;
     transition: transform 0.4s;
     height: 280px; 
@@ -328,9 +341,6 @@ select {
 .job-card p {
     margin: 10px 0;
 }
-
-
-
 
 .p-info {
     width: 60%;
@@ -395,7 +405,7 @@ button a{
 }
 
 button a:hover{ 
-    color: #006D77;
+    color: var(--text-color);
 }
 
 .header-main .profile {

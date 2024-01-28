@@ -152,7 +152,7 @@ article {
 .infop {
     /* background: -webkit-linear-gradient(45deg, #FFDDD2, #E29578, #E29578); */
     color: var(--big-text-color);
-    -webkit-background-clip: text;
+    /* -webkit-background-clip: text; */
     /* -webkit-text-fill-color: transparent; */
 }
 
@@ -256,7 +256,7 @@ h3 a:not(.current):hover::before {
 }
 
 .current {
-    color: var(--border-color);
+    color: #baffba;
 }
 
 /* Button styles */
