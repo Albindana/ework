@@ -6,6 +6,7 @@
     --button-hover-bg: transparent;
     --button-hover-text: #18BA27;
     --big-text-color: #006c0b;
+    --test: #003f06;
 }
 
 /* Global styles */
@@ -21,6 +22,7 @@ body {
 
 /* Header styles */
 header {
+    padding: 30px 0;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -28,7 +30,7 @@ header {
 }
 
 .header-main {
-    padding: 30px;
+    padding: 0px;
     width: 70%;
     justify-content: space-around;
     display: flex;
@@ -182,7 +184,7 @@ article {
 
 .enter {
     text-align: center;
-    padding-bottom: 30px;
+    padding-bottom: 100px;
 }
 
 .enter h1 {
@@ -288,6 +290,7 @@ button:before {
 button:hover {
     background-color: var(--button-hover-bg);
     color: var(--button-hover-text);
+    cursor: pointer;
 }
 
 button:hover:before {
@@ -333,3 +336,30 @@ button:hover:before {
 .signupi:visited {
     color: var(--big-text-color);
 }
+
+/* day night button */
+
+.dayNightBtn {
+    color: var(--text-color);
+    border: none;
+    background-color: transparent;
+
+    transition: transform 0.3s ease;
+}
+
+.dayNightBtn:hover {
+    transform: scale(1.3);
+    cursor: pointer;
+}
+
+.dayNightBtn:hover:before {
+    width: 0;
+}
+
+/* day night button */
+
+.about a , .ubt , .copyright{
+    color: white;
+}
+
+

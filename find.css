@@ -38,6 +38,7 @@ header {
     display: flex;
     justify-content: center;
     border-bottom: 1px solid var(--border-color);
+    align-items: center;
 }
 
 .header-main {
@@ -232,7 +233,7 @@ button:hover:before {
 }
 
 .searchButton:hover {
-    background-color: var(--search-button-bg);
+    background-color: transparent;
 }
 
 .searchTerm:focus + .searchButton {
@@ -514,4 +515,29 @@ button a:hover {
     color: green;
     font-weight: bold;
     text-align: center;
+}
+
+/* day night button */
+
+.dayNightBtn {
+    color: var(--text-color);
+    border: none;
+    background-color: transparent;
+
+    transition: transform 0.3s ease;
+}
+
+.dayNightBtn:hover {
+    transform: scale(1.3);
+    cursor: pointer;
+}
+
+.dayNightBtn:hover:before {
+    width: 0;
+}
+
+/* day night button */
+
+.about a , .ubt , .copyright{
+    color: white;
 }

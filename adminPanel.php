@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="adminPanel.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"/>
   </head>
     <title>Admin Panel</title>
 </head>
@@ -29,55 +29,45 @@
 
     $dbh = new Dbh();
     $db = $dbh->connect();
-    ?>
-
-    <div class="wrapper">  
-      <input type="checkbox" id="btn" hidden>
-      <label for="btn" class="menu-btn">
-        <i class="fas fa-bars"></i>
-        <i class="fas fa-times"></i>
-      </label>
-      <nav id="sidebar">
-        <div class="title">Side Menu</div>
-        <ul class="list-items">
-            <li><a href="index.php"><i class="fas fa-home"></i>Home</a></li>
-            <li><a href="#"><i class="fas fa-sliders-h"></i>Clients</a></li>
-            <li><a href="#"><i class="fas fa-address-book"></i>Services</a></li>
-            <li><a href="#"><i class="fas fa-cog"></i>Settings</a></li>
-            <li><a href="#"><i class="fas fa-stream"></i>Features</a></li>
-            <li><a href="#"><i class="fas fa-user"></i>About us</a></li>
-            <li><a href="#"><i class="fas fa-globe-asia"></i>Languages</a></li>
-            <li><a href="#"><i class="fas fa-envelope"></i>Contact us</a></li>
-            <div class="icons">
-            <!-- <div class="profile"> -->
-                <?php 
-                    if(isset($_SESSION["useruname"]))
-                    {
-                ?>
-                <li><a href="profile.php"><button class="fas fa-user"><?php echo strtoupper($_SESSION["useruname"]); ?></button></a></li>
-                <li><a href="includes/logout.inc.php"><button class="">LOGOUT</button></a></li>
-                
-                <?php
-                    }
-                    else
-                    {
-                ?>
-                    <a href="login.php"><button class="lg">LOG IN</button></a>
-                    <a href="signup.php"><button class="si">SIGN UP</button></a>
-                <?php
-                    }
-                ?>
-            <!-- </div> -->
+    ?> 
+    <header>
+    <div class="header-main">
+        <div class="logo"><h1>eWork</h1></div>
+        <nav>
+            <h3><a class="current" href="index.php">HOME</a></h3>
+            <?php 
+            if (isset($_SESSION["isEmployer"]) && $_SESSION["isEmployer"] == 1): ?>
+            <h3><a href="post.php">POST JOB</a></h3>
+            <?php endif ?>
+            <h3><a href="find.php">FIND JOB</a></h3>
+            <?php
+                $job = new Job();
+                if (isset($_SESSION["userid"]) && $job->hasPostedJob($_SESSION["userid"] && isset($_SESSION["isEmployer"]) && $_SESSION["isEmployer"] == 1)): ?>
+                    <h3><a href="applications.php">VIEW APPLICATIONS</a></h3>
+            <?php endif; 
+                if (isset($_SESSION["isAdmin"]) && $_SESSION["isAdmin"] == 1): ?>
+            <?php endif; ?>
+        </nav>
+        <div class="profile">
+            <?php 
+                if(isset($_SESSION["useruname"]))
+                {
+            ?>
+            <li><a href="profile.php"><button class="uname"><?php echo strtoupper($_SESSION["useruname"]); ?></button></a></li>
+            <li><a href="includes/logout.inc.php"><button class="header-login-a">LOGOUT</button></a></li>
+            
+            <?php
+                }
+                else
+                {
+            ?>
+                <a href="login.php"><button class="lg">LOG IN</button></a>
+                <a href="signup.php"><button class="si">SIGN UP</button></a>
+            <?php
+                }
+            ?>
         </div>
-        </ul>
-      </nav>
     </div>
-    <div class="content">
-      <div class="header">Animated Side Navigation Menu</div>
-      <p>using only HTML and CSS</p>
-    </div>
-    <!-- ====================================== -->
-       
     </header>
     <div class="users">
         <h1>User List</h1>

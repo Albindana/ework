@@ -5,48 +5,74 @@
     font-family: 'IBM Plex Sans', sans-serif;
 }
 
-/* #main-menu{
-    position: fixed;
-    top:0;
-    background-color: #5a5d5f;
-    width: 300px;
-    padding: 30px;
-    height: 100vh;
+body {
+  overflow-x: hidden;
+  background-color: #0d0e0e;
+  color: white;
+  /* text-align: center; */
+  width: 100%;
+}
 
-} */
+body {
+  overflow-x: hidden;
+  background-color: #0d0e0e;
+  color: white;
+  /* text-align: center; */
+  width: 100%;
+}
+
+header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.header-main {
+  padding: 0px;
+  width: 70%;
+  justify-content: space-around;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  color: var(--text-color);
+}
+
+nav {
+  display: flex;
+  gap: 50px;
+}
+
+.lg, .header-login-a, .uname {
+  border: none;
+  background-color: transparent;
+  color: var(--text-color);
+}
+
+.si {
+  border: none;
+  background-color: var(--text-color);
+  color: var(--background-color);
+}
 header .profile {
-    list-style-type: none; /* Removes the dot before the list item */
-    display: flex; /* Aligns the items in a row */
-    justify-content: center; /* Aligns the items to the right */
+    list-style-type: none;
+    display: flex; 
+    justify-content: center; 
     align-items:center; 
-    gap: 4px; /* Adds space between the items */
+    gap: 4px; 
 }
 .uname{
-    background-color:  #0d0e0e;
-    color: #130e0e;
+    color: white;
 }
 .header-login-a{
     background-color:  #0d0e0e;
     color: #ececec;
 }
-.uname:hover{
-    background-color:  #141515;
+
+.users {
+  margin: 50px 0;
 }
-.header-login-a:hover{
-    background-color:  #141515;
-}
-h3 a{
-    list-style-type: none;
-    color: #ececec;
-    text-decoration: none;
-}
-body {
-    overflow-x: hidden;
-    background-color: #0d0e0e;
-    color: white;
-    /* text-align: center; */
-    width: 100%;
-}
+
 h1 {
     font-size: 2em;
     text-align: center;
@@ -253,3 +279,19 @@ button:hover {
     font-size: 40px;
     font-weight: 700;
   }
+
+  .about a , .ubt , .copyright{
+    color: white;
+}
+
+
+h3 a{
+  list-style-type: none;
+  color: white;
+  text-decoration: none;
+  transition: transform 1s;
+}
+
+h3 a:hover {
+transform: scale(2);
+}

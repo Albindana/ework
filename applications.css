@@ -1,40 +1,75 @@
+:root {
+    --background-color: #f4fff4;
+    --border-color: #18FF27;
+    --text-color: #18BA27;
+    --button-bg: #006c0b;
+    --button-hover-bg: transparent;
+    --button-hover-text: #18BA27;
+    --bigger-text-color: #006c0b;
+    --big-text-color: #18BA27;
+    --btn-background: #cdffcd;
+    --input-color: #98ff98;
+}
+
 *{
     font-family: 'IBM Plex Sans', sans-serif;
 }
-header{
+
+body {
+    overflow-x: hidden;
+    background-color: var(--background-color);
+    color: white;
+    text-align: center;
+    width: 100%;
+}
+
+header {
     width: 100%;
     display: flex;
     justify-content: center;
-    border-bottom: 1px solid #5a5d5f;
+    border-bottom: 1px solid var(--border-color);
+    align-items: center;
 }
-.header-main{
-    padding: 30px;
+
+.header-main {
     width: 70%;
     justify-content: space-around;
     display: flex;
     text-align: center;
-    align-items: center; 
+    align-items: center;
+    color: var(--big-text-color);
 }
+
+nav {
+    display: flex;
+    gap: 50px;
+}
+
 .header-main .profile {
-    list-style-type: none; /* Removes the dot before the list item */
-    display: flex; /* Aligns the items in a row */
-    justify-content: flex-end; /* Aligns the items to the right */
-    align-items: flex-end; /* Aligns the items to the right */
-    gap: 4px; /* Adds space between the items */
+    list-style-type: none;
+    display: flex; 
+    justify-content: flex-end; 
+    align-items: flex-end; 
+    gap: 4px; 
 }
-.uname{
-    background-color:  #0d0e0e;
-    color: #ececec;
+
+.uname {
+    border: none;
+    background-color: transparent;
+    color: var(--text-color);
+    font-family: 'IBM Plex Sans', sans-serif;
 }
+
 .header-login-a{
-    background-color:  #0d0e0e;
-    color: #ececec;
+    border: none;
+    background-color: var(--text-color);
+    color: var(--background-color);
 }
-.uname:hover{
-    background-color:  #141515;
-}
-.header-login-a:hover{
-    background-color:  #141515;
+
+h3 a {
+    text-decoration: none;
+    position: relative;
+    color: var(--big-text-color);
 }
 
 h3 a:not(.current)::before {
@@ -44,37 +79,69 @@ h3 a:not(.current)::before {
     bottom: -6px;
     width: 0;
     height: 2px;
-    background-color: #006D77;
+    background-color: var(--big-text-color);
     transition: width 0.3s ease;
 }
 
 h3 a:not(.current):hover::before {
-    width: 100%;  
+    width: 100%;
+}
+
+h3 a:hover {
+    color: var(--big-text-color);
 }
 
 .current {
-    color: gray;
+    color: #baffba;
 }
 
-h3 a{
-    list-style-type: none;
-    color: #ececec;
-    text-decoration: none;
+.current:hover {
+    color: #baffba;
 }
+
+
+button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--button-bg);
+    color: var(--background-color);
+    text-decoration: none;
+    position: relative;
+    font-weight: bold;
+    font-size: 15px;
+    overflow: hidden;
+    transition: background-color 1s ease, color 1s ease;
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+button:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 3px;
+    background-color: var(--text-color);
+    transition: width 0.7s ease;
+}
+
+button:hover {
+    background-color: var(--button-hover-bg);
+    color: var(--button-hover-text);
+}
+
+button:hover:before {
+    width: 100%;
+}
+
 nav {
     display: flex;
     gap: 40px;
 }
-body {
-    overflow-x: hidden;
-    background-color: #0d0e0e;
-    color: white;
-    text-align: center;
-    width: 100%;
-}
+
 h1 {
     font-size: 2em;
-
+    color: var(--text-color);
 }
 
 input[type=submit] {
@@ -83,22 +150,6 @@ input[type=submit] {
     border-radius: 5px;
     border: none;
     color: #d6d4d2;
-}
-button {
-    width: 100px; /* Adjust as needed */
-    height: 30px; /* Adjust as needed */
-    border-radius: 20px; /* Adjust as needed */
-    border: none;
-    outline: none;
-    margin-bottom: 3px;
-    transition: transform .2s;
-    -webkit-text-fill-color: #ececec;
-    font-weight: bold;
-    font-family: 'IBM Plex Sans', sans-serif;
-}
-
-button:hover {
-    transform: scale(1.1); /* Makes the button 10% larger when hovered */
 }
 
 .delete {
@@ -161,4 +212,28 @@ button:hover {
     background-color: #141515;
 } 
 
+/* day night button */
+
+.dayNightBtn {
+    color: var(--text-color);
+    border: none;
+    background-color: transparent;
+
+    transition: transform 0.3s ease;
+}
+
+.dayNightBtn:hover {
+    transform: scale(1.3);
+    cursor: pointer;
+}
+
+.dayNightBtn:hover:before {
+    width: 0;
+}
+
+/* day night button */
+
+.about a , .ubt , .copyright{
+    color: white;
+}
 
