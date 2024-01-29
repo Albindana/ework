@@ -94,15 +94,16 @@ if (isset($_SESSION["success"])) {
                     
     <div class="wrap">
         <div class="search">
-           <input type="text" class="searchTerm" placeholder="Looking for a specific job? Search here.">
+           <input type="text" id="skillsInput" oninput="showSuggestions()" class="searchTerm" placeholder="Looking for a specific job? Search here.">
            <button type="submit" class="searchButton">
              <p>SEARCH</p>
           </button>
-          
+            <div id="suggestions" class="suggestions">  </div>
+            <div id="selectedSkills"> </div>
         </div>
     </div>
 
-        <?php if (isset($error_message)): ?>
+        <?php if (isset($error_message)): ?>s
             <div class="error-message">
                 <?php echo $error_message; ?>
             </div>
@@ -162,5 +163,9 @@ if (isset($_SESSION["success"])) {
             </div>
         </div>
     </footer>
+    <script src="find.js"></script>
 </body>
 </html>
+
+
+

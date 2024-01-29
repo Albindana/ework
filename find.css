@@ -541,3 +541,22 @@ button a:hover {
 .about a , .ubt , .copyright{
     color: white;
 }
+/* =============================== */
+.suggestions {
+    position: absolute;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    max-height: 150px;
+    overflow-y: auto;
+    width: 200px;
+    display: none;
+}
+
+.suggestion-item {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.suggestion-item:hover {
+    background-color: #ddd;
+}
