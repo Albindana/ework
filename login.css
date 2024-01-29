@@ -1,5 +1,15 @@
+:root {
+    --background-color: #f4fff4;
+    --border-color: #18FF27;
+    --text-color: #18BA27;
+    --button-bg: #007bff;
+    --big-text-color: #006c0b;
+    --btn-background: #cdffcd;
+    --input-color: #6fff6f;
+}
+
 body {
-    background-color: #EDF6F9;
+    background-color: var(--background-color);
     font-family: 'IBM Plex Sans', sans-serif;
     margin: 0;
     padding: 0;
@@ -9,11 +19,12 @@ header{
     width: 100%;
     display: flex;
     justify-content: center;
-    border-bottom: 1px solid #83C5BE;
+    border-bottom: 1px solid var(--text-color);
+    align-items: center;
 }
 
 .form-container p a {
-    color: #006D77; 
+    color: var(--big-text-color); 
     text-decoration: none; 
     transition: color 0.3s ease; 
     font-family: 'IBM Plex Sans', sans-serif;
@@ -21,7 +32,7 @@ header{
 }
 
 .form-container p a:hover {
-    color: #004e59; 
+    color: var(--text-color); 
 }
 
 .header-main{
@@ -31,7 +42,7 @@ header{
     display: flex;
     text-align: center;
     align-items: center;
-    color: #006D77;  
+    color: var(--text-color);  
 }
 
 nav {
@@ -42,13 +53,13 @@ nav {
 .lg{
     border: none;
     background-color: transparent;
-    color: #006D77;
+    color: var(--big-text-color);
 }
 
 .si{
     border: none;
-    background-color:  #006D77;
-    color: #EDF6F9;
+    background-color:  var(--text-color);
+    color: var(--text-color);
 }
   
   .container {
@@ -61,7 +72,7 @@ nav {
   }
   
   .form-container {
-    background-color: #fff;
+    background: var(--input-color);
     padding: 30px;
     padding: 20px;
     border-radius: 8px;
@@ -105,31 +116,34 @@ nav {
     margin-bottom: 10px;
     padding: 8px;
     border-radius: 5px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--big-text-color);
   }
   
-  input[type="submit"] {
-    background-color: #006D77;
-    color: #fff;
+input[type="submit"] {
+    background-color: #006c0b;
+    color: var(--btn-background);
     cursor: pointer;
     transition: background-color 0.3s ease;
-  }
+    border: none;
+}
   
-  input[type="submit"]:hover {
-    background-color: #83C5BE;
-  }
+input[type="submit"]:hover {
+    background-color: var(--border-color);
+    color: #006c0b;
+    font-weight: bold;
+}
 
-  .copyright {
+.copyright {
     text-align: center;
 }
 
 footer {
-    background-color: #006D77;
+    background-color: var(--big-text-color);
     margin-bottom: 0px;
 }
 
 .content {
-    color: #83C5BE;
+    color: var(--text-color);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -137,19 +151,19 @@ footer {
 }
 
 .cp {
-    color: #83C5BE;
+    color: var(--text-color);
 }
 
 h3 a {
     text-decoration: none;
     position: relative;
-    color: #006D77;
+    color: var(--text-color);
 }
 
 h3 a {
     text-decoration: none;
     position: relative;
-    color: #006D77;
+    color: var(--text-color);
 }
 
 h3 a:not(.current)::before {
@@ -159,7 +173,7 @@ h3 a:not(.current)::before {
     bottom: -6px;
     width: 0;
     height: 2px;
-    background-color: #006D77;
+    background-color: var(--text-color);
     transition: width 0.3s ease;
 }
 
@@ -174,7 +188,7 @@ h3 a:not(.current):hover::before {
 button {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #006D77;
+    background-color: var(--text-color);
     color: #fff;
     text-decoration: none;
     position: relative;
@@ -192,13 +206,13 @@ button:before {
     bottom: 0;
     width: 0;
     height: 3px;
-    background-color: #006D77;
+    background-color: var(--text-color);
     transition: width 0.7s ease;
 }
 
 button:hover {
     background-color: transparent;
-    color: #006D77;
+    color: var(--text-color);
 }
 
 button:hover:before {
@@ -213,7 +227,7 @@ button a{
 }
 
 button a:hover{ 
-    color: #006D77;
+    color: var(--text-color);
 }
 
 body {
@@ -237,8 +251,7 @@ footer {
     position: fixed;
     bottom: 0px; 
     width: 100%;
-    background-color: #006D77;
-    color: #83C5BE;
+    background-color: var(--big-text-color);
     text-align: center;   
 }
 
@@ -248,5 +261,32 @@ footer {
     margin-bottom: 15px;
 }
 
+input {
+    background-color: var(--btn-background);
+}
+
+/* day night button */
+
+.dayNightBtn {
+    color: var(--text-color);
+    border: none;
+    background-color: transparent;
+
+    transition: transform 0.3s ease;
+}
+
+.dayNightBtn:hover {
+    transform: scale(1.3);
+    cursor: pointer;
+}
+
+.dayNightBtn:hover:before {
+    width: 0;
+}
+
+/* day night button */
+.about a , .ubt , .copyright{
+    color: white;
+}
 
 
