@@ -1,6 +1,11 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 session_start();
 include 'classes/dbh.classes.php';
+include 'includes/displayImage.inc.php';
 require_once 'classes/cv.classes.php';
 if(isset($_SESSION["userid"])){
     
@@ -14,6 +19,21 @@ $sql = "SELECT * FROM cv WHERE users_id = ?";
 $stmt = $pdo->prepare($sql);
 $stmt->execute([$userId]);
 $cv = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$sql = "SELECT users_email FROM users WHERE users_id = ?";
+$stmt = $pdo->prepare($sql);
+$stmt->execute([$userId]);
+$user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+$motivationalLetter = $cv[0]['cv_motivationalLetter'];
+$skills = $cv[0]['cv_skills'];
+$pImage = $cv[0]['cv_pImage'];
+$address = $cv[0]['cv_address'];
+$phoneNumber = $cv[0]['cv_phoneNumber'];
+$degree = $cv[0]['cv_degree'];
+$country = $cv[0]['cv_country'];
+$city = $cv[0]['cv_city'];
+$usersEmail = $user['users_email'];
 ?>
 
 <!DOCTYPE html>
@@ -46,7 +66,7 @@ $cv = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <input type="text" name="cv_city" placeholder="City">
             <input type="text" name="cv_degree" placeholder="Degree">
             <input type="file" name="cv_pImage" placeholder="Profile Image" >
-            <input type="submit" name="submit">Submit</input>
+                        <input type="submit" name="submit">Submit</input>
         </form>
     </div>
 
@@ -60,8 +80,8 @@ $cv = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </div>
             <div class="col-lg-9">
                 <!-- Name and Country -->
-                <h1 class="display-4">Your Name</h1>
-                <p class="lead">Country: Your Country</p>
+                <h1 class="display-4"><?php echo ($_SESSION["useruname"]); ?></h1>
+                <p class="lead">Country: <?php echo $country; ?></p>
             </div>
         </div>
 
@@ -69,15 +89,15 @@ $cv = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <div class="row second mt-4">
             <div class="col-lg-6">
                 <!-- Additional Personal Information -->
-                <p><strong>Address:</strong> Your Address</p>
-                <p><strong>Phone Number:</strong> Your Phone Number</p>
-                <p><strong>Email:</strong> your@email.com</p>
+                <p><strong>Address:</strong> <?php echo $address; ?></p>
+                <p><strong>Phone Number:</strong> <?php echo $phoneNumber; ?></p>
+                <p><strong>Email:</strong> <?php echo $usersEmail; ?></p>
             </div>
             <div class="col-lg-6">
                 <!-- Education and Other Information -->
-                <p><strong>Degree:</strong> Your Degree</p>
-                <p><strong>Country:</strong> Your Country</p>
-                <p><strong>City:</strong> Your City</p>
+                <p><strong>Degree:</strong> <?php echo $degree; ?></p>
+                <p><strong>Country:</strong> <?php echo $country; ?></p>
+                <p><strong>City:</strong> <?php echo $city; ?></p>
             </div>
         </div>
 
@@ -101,8 +121,8 @@ $cv = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
 
     <!-- Bootstrap JS and Popper.js -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
 </body>
 </html>
