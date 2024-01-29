@@ -14,3 +14,8 @@
 .second{
     border-bottom: 1px solid black;
 }
+.img-fluid.rounded-circle {
+    width: 100px;  /* or any size you want */
+    height: 100px;  /* or any size you want */
+    object-fit: cover;
+}
