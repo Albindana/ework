@@ -52,7 +52,7 @@ $usersEmail = $user['users_email'];
             </p>
                 
         </div>
-        <form action="includes/cv.inc.php" method="post">
+        <form action="includes/cv.inc.php" method="post" enctype="multipart/form-data">
            
             <input type="text" name="cv_motivationalLetter" placeholder="Motivational Letter" >
             <input type="text" name="cv_skills" placeholder="Skills" >
@@ -61,7 +61,7 @@ $usersEmail = $user['users_email'];
             <input type="text" name="cv_country" placeholder="Country">
             <input type="text" name="cv_city" placeholder="City">
             <input type="text" name="cv_degree" placeholder="Degree">
-            <input type="file" name="cv_pImage" placeholder="Profile Image" >
+            <input type="file" name="cv_pImage" placeholder="Profile Image">
                         <input type="submit" name="submit">Submit</input>
         </form>
     </div>
@@ -70,10 +70,11 @@ $usersEmail = $user['users_email'];
 
         <!-- Header Row -->
         <div class="row first justify-content-center">
-            <div class="col-lg-3">
-                <!-- Photo -->
-                <img src="your_photo.jpg" alt="Your Photo" class="img-fluid rounded-circle">
-            </div>
+                    <div class="col-lg-3">
+                           <!-- Photo -->
+                            <img src="<?php echo $pImage ?>" alt="Your Photo" class="img-fluid rounded-circle">
+                    </div>
+
             <div class="col-lg-9">
                 <!-- Name and Country -->
                 <h1 class="display-4"><?php echo ($_SESSION["useruname"]); ?></h1>
