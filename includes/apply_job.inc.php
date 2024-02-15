@@ -9,9 +9,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $userId = $_SESSION["userid"];
 
     $application = new Application();
-    $message = $application->applyForJob($userId, $jobId);
+    $cv_id = $application->hasCv($userId);
+
+    $message = $application->applyForJob($userId, $jobId, $cv_id);
 
     echo $message;
 } else {
     echo "Form was not submitted correctly.";
 }
+

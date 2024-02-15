@@ -188,12 +188,7 @@ input[type=submit] {
     width: fit-content; 
     min-width: 60px; 
     font-size: 0.5em; 
-    transition: background-color 0.3s ease, border-color 0.3s ease; 
-}
-
-.job.active {
-    background-color: rgb(84, 138, 67);
-    border-color: rgb(38, 88, 23); 
+    transition: 0.3s ease; 
 }
 
 #applicants-container {
@@ -210,7 +205,64 @@ input[type=submit] {
     padding: 10px;
     box-sizing: border-box;
     background-color: #141515;
+    transition: 0.3s ease; 
 } 
+
+.job.active, .application.active {
+    background-color: rgb(84, 138, 67);
+    border-color: rgb(38, 88, 23); 
+}
+
+.jobs-container .job:hover, #applicants-container .application:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    background-color: #141515;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 10px;
+    width: 50%; /* Could be more or less, depending on screen size */
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+
+  .cv-image {
+    width: 100px; /* Adjust as needed */
+    height: 100px; /* Adjust as needed */
+    border-radius: 50%; /* This makes the image round */
+    object-fit: cover; /* This ensures the image covers the entire area without distortion */
+}
 
 /* day night button */
 

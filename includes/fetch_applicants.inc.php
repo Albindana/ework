@@ -11,11 +11,12 @@ if (isset($_POST['jobId'])) {
     $applications = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     foreach ($applications as $application) {
-        echo '<div class="application">';
+        echo '<div class="application" data-user-id="' . htmlspecialchars($application['user_id']) . '">';
         echo '<p><strong>Applicant:</strong> ' . htmlspecialchars($application['users_uname']) . '</p>';
         echo '<p><strong>Email:</strong> ' . htmlspecialchars($application['users_email']) . '</p>';
         echo '<p><strong>Applied At:</strong> ' . htmlspecialchars($application['application_date']) . '</p>';
         echo '</div>';
     }
+
 }
 ?>
