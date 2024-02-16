@@ -94,12 +94,11 @@ if (isset($_SESSION["success"])) {
                     
     <div class="wrap">
         <div class="search">
-           <input type="text" id="skillsInput" oninput="showSuggestions()" class="searchTerm" placeholder="Looking for a specific job? Search here.">
-           <button type="submit" class="searchButton">
-             <p>SEARCH</p>
-          </button>
-            <div id="suggestions" class="suggestions">  </div>
-            <div id="selectedSkills"> </div>
+            <input type="text" name="search-txt" id="skillsInput" oninput="showSuggestions()" class="searchTerm" placeholder="Looking for a specific job? Search here.">
+            <button type="submit" name="search-submit" class="searchButton">
+            <p>SEARCH</p>
+            </button>
+            <div id="suggestions" class="suggestions"></div>           
         </div>
     </div>
 

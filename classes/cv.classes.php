@@ -23,7 +23,42 @@ class Cv extends Dbh {
         $this->degree = $degree;
         $this->pImage = $pImage;
     }
-    
+    public function getUserId() {
+        return $this->userId;
+    }
+
+    public function getMotivationalLetter() {
+        return $this->motivationalLetter;
+    }
+
+    public function getSkills() {
+        return $this->skills;
+    }
+
+    public function getAddress() {
+        return $this->address;
+    }
+
+    public function getPhoneNumber() {
+        return $this->phoneNumber;
+    }
+
+    public function getCountry() {
+        return $this->country;
+    }
+
+    public function getCity() {
+        return $this->city;
+    }
+
+    public function getDegree() {
+        return $this->degree;
+    }
+
+    public function getPImage() {
+        // Assuming you want to base64 encode the binary data for display
+        return base64_encode($this->pImage);
+    }
     public function getCv() {
         $sql = "SELECT * FROM cv WHERE users_id = ?";
         $stmt = $this->connect()->prepare($sql);

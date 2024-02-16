@@ -33,5 +33,10 @@ function addSkill(skill) {
     const selectedSkillsContainer = document.getElementById("selectedSkills");
     const selectedSkillItem = document.createElement("div");
     selectedSkillItem.textContent = skill;
+    selectedSkillItem.addEventListener("click", function () {
+        selectedSkillsContainer.removeChild(selectedSkillItem);
+    });
     selectedSkillsContainer.appendChild(selectedSkillItem);
+    
 }
+

@@ -550,13 +550,25 @@ button a:hover {
     overflow-y: auto;
     width: 200px;
     display: none;
+    margin-top: 42px;
 }
 
 .suggestion-item {
     padding: 8px;
-    cursor: pointer;
+    cursor: pointer;  
 }
 
 .suggestion-item:hover {
     background-color: #ddd;
+}
+
+#selectedSkills{
+    border: 1px solid black;
+    display: block;
+}
+#selectedSkills div{
+    background-color: #007bff;
+    border-radius: 20px;
+    padding: 5px 10px;
+    cursor: pointer;
 }
