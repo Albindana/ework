@@ -1,57 +1,16 @@
 <?php
-// if (isset($_POST['submit']) && isset($_FILES['cv_pImage'])) {
-//     require_once "dbh.classes.php";
-
-//     // Fetch all the data from the form
-//     $userId = $_SESSION["userid"];
-//     $motivationalLetter = filter_input(INPUT_POST, 'cv_motivationalLetter', FILTER_SANITIZE_STRING);
-//     $skills = filter_input(INPUT_POST, 'cv_skills', FILTER_SANITIZE_STRING);
-//     $address = filter_input(INPUT_POST, 'cv_address', FILTER_SANITIZE_STRING);
-//     $phoneNumber = filter_input(INPUT_POST, 'cv_phoneNumber', FILTER_SANITIZE_STRING);
-//     $country = filter_input(INPUT_POST, 'cv_country', FILTER_SANITIZE_STRING);
-//     $city = filter_input(INPUT_POST, 'cv_city', FILTER_SANITIZE_STRING);
-//     $degree = filter_input(INPUT_POST, 'cv_degree', FILTER_SANITIZE_STRING);
-
-//     // Read the file contents
-//     $pImage = file_get_contents($_FILES['cv_pImage']['tmp_name']);
-
-//     // Prepare the insert query
-//     $sql = "INSERT INTO cv (users_id, cv_motivationalLetter, cv_skills, cv_address, cv_phoneNumber, cv_country, cv_city, cv_degree, cv_pImage) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-//     $stmt = $pdo->prepare($sql);
-
-//     // Try to execute the query
-//     try {
-//         // Bind the parameters
-//         $stmt->bindParam(1, $userId);
-//         $stmt->bindParam(2, $motivationalLetter);
-//         $stmt->bindParam(3, $skills);
-//         $stmt->bindParam(4, $address);
-//         $stmt->bindParam(5, $phoneNumber);
-//         $stmt->bindParam(6, $country);
-//         $stmt->bindParam(7, $city);
-//         $stmt->bindParam(8, $degree);
-//         $stmt->bindParam(9, $pImage, PDO::PARAM_LOB); // Bind the image data as a BLOB
-
-//         // Execute the query
-//         $stmt->execute();
-
-//         // Redirect the user to the view page
-//         header("Location: ../index.php");
-//     } catch (Exception $e) {
-//         // Display the error message
-//         echo 'An error occurred while inserting the CV data: ' . $e->getMessage();
-//         header("Location: ../cv.php");
-//     }
-// } else {
-//     // Redirect the user to the index page
-//     header("Location: ../index.php");
-// }
-
+// cv.inc.php
 session_start();
 include_once '../classes/dbh.classes.php';
 require_once '../classes/cv.classes.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Check if the necessary variables are set
+    if (!isset($_SESSION["userid"])) {
+        echo 'Error: Necessary variables are not set.';
+        exit();
+    }
+
     // Fetch all the data from the form
     $userId = $_SESSION["userid"];
     $motivationalLetter = $_POST['cv_motivationalLetter'];
@@ -61,17 +20,44 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $country = $_POST['cv_country'];
     $city = $_POST['cv_city'];
     $degree = $_POST['cv_degree'];
-    $pImage = $_POST['cv_pImage']; // Make sure to handle the file upload correctly
+    $pImage = $_FILES['cv_pImage']; // Use $_FILES for file uploads
+
+    // Handle the file upload
+    $imageName = $pImage['name'];
+    $imageTmpName = $pImage['tmp_name'];
+    $imageSize = $pImage['size'];
+    $imageError = $pImage['error'];
+    $imageType = $pImage['type'];
+
+    // Get the image extension
+    $imageExt = explode('.', $imageName);
+    $imageActualExt = strtolower(end($imageExt));
+
+    // Check if the image upload was successful
+    if ($imageError !== 0) {
+        echo 'Error: File upload failed with error code ' . $imageError;
+        exit();
+    }
+
+    // You may also want to check if the file is an image and restrict the file size
+
+    // Generate a new name for the image to avoid overwriting existing images
+    $imageNameNew = uniqid('', true) . "." . $imageActualExt;
+
+    // Define the path where you want to save the image
+    $imageDestination = 'uploads/' . $imageNameNew;
+
+    // Move the uploaded image to the destination
+    move_uploaded_file($imageTmpName, '../' . $imageDestination);
 
     try {
-        $cv = new Cv($userId, $motivationalLetter, $skills, $address, $phoneNumber, $country, $city, $degree, $pImage);
+        $cv = new Cv($userId, $motivationalLetter, $skills, $address, $phoneNumber, $country, $city, $degree, $imageDestination);
         $cv->insertCv();
         echo 'The CV has been created successfully.';
     } catch (Exception $e) {
         echo 'An error occurred while creating the CV: ' . $e->getMessage();
     }
-    
-} else{
-    echo 'error occured';
+} else {
+    echo 'Error: The form was not submitted correctly.';
 }
-?>
+
