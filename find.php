@@ -2,13 +2,14 @@
 session_start();
 include 'classes/dbh.classes.php';
 include 'classes/job.classes.php';
+include 'classes/find.classes.php';
 
 $db = new Dbh();
 $pdo = $db->connect();
 $sql = "SELECT jobs.*, users.users_uname FROM jobs JOIN users ON jobs.users_id = users.users_id";
-$stmt = $pdo->prepare($sql);
-$stmt->execute();
-$jobs = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$stmt1 = $pdo->prepare($sql);
+$stmt1->execute();
+$jobs = $stmt1->fetchAll(PDO::FETCH_ASSOC);
 
 if (isset($_SESSION["error"])) {
     $error_message = $_SESSION["error"];
@@ -18,6 +19,7 @@ if (isset($_SESSION["success"])) {
     $success_message = $_SESSION["success"];
     unset($_SESSION["success"]);
 }
+
 ?>
 
 
@@ -94,12 +96,12 @@ if (isset($_SESSION["success"])) {
                     
     <div class="wrap">
         <div class="search">
-           <input type="text" id="skillsInput" oninput="showSuggestions()" class="searchTerm" placeholder="Looking for a specific job? Search here.">
-           <button type="submit" class="searchButton">
-             <p>SEARCH</p>
-          </button>
-            <div id="suggestions" class="suggestions">  </div>
-            <div id="selectedSkills"> </div>
+            <form actiion='' method="post">
+                <input type="text" name="search" id="skillsInput" oninput="showSuggestions()" class="searchTerm" placeholder="Looking for a specific job? Search here.">
+                <button type="submit" name="search-submit" class="searchButton">
+                    <p>SEARCH</p>
+                </button>
+            </form>
         </div>
     </div>
 
@@ -114,19 +116,68 @@ if (isset($_SESSION["success"])) {
             </div>
         <?php endif; ?>
 
-    <div class="jobs">
-        
     
+    
+    <?php 
+    if (isset($_POST['search-submit'])) {
+        $searchTerm = $_POST['search'];
+
+        $sql2 = "SELECT * FROM jobs WHERE job_title like '%$searchTerm%' OR job_description LIKE '%$searchTerm%'";
+        // $sql2 = "SELECT jobs.*, users.users_uname FROM jobs JOIN users ON jobs.users_uname = users.users_uname WHERE jobs.job_title LIKE '%$searchTerm%' OR jobs.job_description LIKE '%$searchTerm%'";
+        $stmt2 = $pdo->prepare($sql2);
+        $stmt2->execute();
+        $srchResult = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+        if ($stmt2->rowCount() == 0) {
+            echo "<h2>No data found.</h2>";
+        } else {
+            // Process the fetched data
+            foreach ($srchResult as $row) {?>
+                <div class="job-card">
+                    <div class="p-info">
+                        <h3><?php echo htmlspecialchars($row['job_title']); ?></h3>
+                        <div style="display:flex;justify-content:space-between;width:100%;">
+                            <p><strong>Posted by:</strong> <?php echo htmlspecialchars($row['users_uname']); ?></p>
+                            <p><strong>Company Name:</strong> <?php echo htmlspecialchars($row['job_compname']); ?></p>
+                        </div>
+                        <p><strong>Description:</strong> <?php echo htmlspecialchars(mb_strimwidth($row['job_description'], 0, 80, "...")); ?></p>
+                        <p><strong>Skills:</strong> <?php echo htmlspecialchars(mb_strimwidth($row['job_skills'], 0, 80, "...")); ?></p>
+                        <p><strong>Pay/Income:</strong> <?php echo htmlspecialchars($row['job_income']); ?></p>
+                    </div>
+                    <div class="p-img">
+                    <?php if (isset($_SESSION["isEmployer"]) && $_SESSION["isEmployer"] != 1): ?>
+                        <form action="includes/apply_job.inc.php" method="post">
+                            <input type="hidden" name="job_id" value="<?php echo $job['job_id']; ?>">
+                            <button type="submit" class="submitBtn">APPLY NOW!</button>
+                        </form>
+                        <?php endif; 
+                        // Check if the current user is the one who posted the job
+                        if (isset($_SESSION["userid"]) && $_SESSION["userid"] == $job['users_id'] && isset($_SESSION["isEmployer"]) && $_SESSION["isEmployer"] == 1): ?>
+                            <form action="includes/delete_job.inc.php" method="post">
+                                <input type="hidden" name="job_id" value="<?php echo $job['job_id']; ?>">
+                                <button type="submit" class="deleteBtn">DELETE</button>
+                            </form>
+                        <?php endif; ?>
+                    </div>
+            </div>
+            <?php
+            }
+        }
+    }else{
+    ?>
+    
+    <div class="jobs">
         <div class="job-container">
         <?php foreach ($jobs as $job): ?>
             <div class="job-card">
                 <div class="p-info">
                     <h3><?php echo htmlspecialchars($job['job_title']); ?></h3>
+                    <div style="display:flex;justify-content:space-between;width:100%;">
+                        
+                        <p><strong>Company Name:</strong> <?php echo htmlspecialchars($job['job_compname']); ?></p>
+                    </div>
                     <p><strong>Description:</strong> <?php echo htmlspecialchars(mb_strimwidth($job['job_description'], 0, 80, "...")); ?></p>
-                    <p><strong>Company Name:</strong> <?php echo htmlspecialchars($job['job_compname']); ?></p>
                     <p><strong>Skills:</strong> <?php echo htmlspecialchars(mb_strimwidth($job['job_skills'], 0, 80, "...")); ?></p>
                     <p><strong>Pay/Income:</strong> <?php echo htmlspecialchars($job['job_income']); ?></p>
-                    <p><strong>Posted by:</strong> <?php echo htmlspecialchars($job['users_uname']); ?></p>
                 </div>
                 <div class="p-img">
                 <?php if (isset($_SESSION["isEmployer"]) && $_SESSION["isEmployer"] != 1): ?>
@@ -146,8 +197,8 @@ if (isset($_SESSION["success"])) {
             </div>
         <?php endforeach; ?>
         </div>
-   
-</div>
+    </div>
+    <?php } ?>
     <footer>
         <div class="content">
             <div class="ubt">
