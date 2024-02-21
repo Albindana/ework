@@ -23,43 +23,40 @@ class Job extends Dbh {
         $stmt->execute([$userId]);
         return $stmt->rowCount() > 0;
     }
-    public function deleteJob($userId, $jobId) {
-   
-    // Check if the job belongs to the user or the user is an admin
-    $sql = "SELECT * FROM jobs WHERE job_id = ? AND (users_id = ? OR ? = 1)";
-    $stmt = $this->pdo->prepare($sql);
-    $stmt->execute([$jobId, $userId, $_SESSION['isAdmin']]);
-    if($stmt->rowCount() > 0) {
-        // Start a transaction
-        $this->pdo->beginTransaction();
+    public function deleteJob($userId, $jobId) {  
+        // Check if the job belongs to the user or the user is an admin
+        $sql = "SELECT * FROM jobs WHERE job_id = ? AND (users_id = ? OR ? = 1)";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([$jobId, $userId, $_SESSION['isAdmin']]);
+        if($stmt->rowCount() > 0) {
+            // Start a transaction
+            $this->pdo->beginTransaction();
 
-        try {
-            // Delete associated records in the applications table
-            $stmt = $this->pdo->prepare('DELETE FROM applications WHERE job_id = ?');
-            $stmt->execute([$jobId]);
+            try {
+                // Delete associated records in the applications table
+                $stmt = $this->pdo->prepare('DELETE FROM applications WHERE job_id = ?');
+                $stmt->execute([$jobId]);
 
-            // If the job belongs to the user or the user is an admin, delete the job
-            $sql = "DELETE FROM jobs WHERE job_id = ?";
-            $stmt = $this->pdo->prepare($sql);
-            $stmt->execute([$jobId]);
+                // If the job belongs to the user or the user is an admin, delete the job
+                $sql = "DELETE FROM jobs WHERE job_id = ?";
+                $stmt = $this->pdo->prepare($sql);
+                $stmt->execute([$jobId]);
 
-            // Commit the transaction
-            $this->pdo->commit();
+                // Commit the transaction
+                $this->pdo->commit();
 
-            return true;
-        } catch (PDOException $e) {
-            // Roll back the transaction if something failed
-            $this->pdo->rollBack();
-            echo "Error: " . $e->getMessage();
+                return true;
+            } catch (PDOException $e) {
+                // Roll back the transaction if something failed
+                $this->pdo->rollBack();
+                echo "Error: " . $e->getMessage();
+                return false;
+            }
+        } else {
+            // If the job does not belong to the user and the user is not an admin, return false
             return false;
         }
     }
-     else {
-        // If the job does not belong to the user and the user is not an admin, return false
-        return false;
-    }
-
-}
 }
 
 

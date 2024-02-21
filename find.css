@@ -30,6 +30,7 @@
 body {
     background-color: var(--background-color);
     font-family: 'IBM Plex Sans', sans-serif;
+    min-height: 100vh;
 }
 
 /* Header styles */
@@ -72,7 +73,7 @@ nav {
 
 /* Footer styles */
 footer {
-    position: fixed;
+    position: relative;
     bottom: 0px;
     width: 100%;
     background-color: var(--footer-bg);
