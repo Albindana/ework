@@ -73,7 +73,7 @@ nav {
 
 /* Footer styles */
 footer {
-    position: relative;
+    position:absolute;
     bottom: 0px;
     width: 100%;
     background-color: var(--footer-bg);
@@ -573,3 +573,4 @@ button a:hover {
     padding: 5px 10px;
     cursor: pointer;
 }
+
