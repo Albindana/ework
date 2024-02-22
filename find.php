@@ -122,7 +122,7 @@ if (isset($_SESSION["success"])) {
     if (isset($_POST['search-submit'])) {
         $searchTerm = $_POST['search'];
 
-        $sql2 = "SELECT * FROM jobs WHERE job_title like '%$searchTerm%' OR job_description LIKE '%$searchTerm%'";
+        $sql2 = "SELECT jobs.*, users.users_uname FROM jobs JOIN users ON jobs.users_id = users.users_id WHERE job_title like '%$searchTerm%' OR job_description LIKE '%$searchTerm%'";
         // $sql2 = "SELECT jobs.*, users.users_uname FROM jobs JOIN users ON jobs.users_uname = users.users_uname WHERE jobs.job_title LIKE '%$searchTerm%' OR jobs.job_description LIKE '%$searchTerm%'";
         $stmt2 = $pdo->prepare($sql2);
         $stmt2->execute();
@@ -151,7 +151,8 @@ if (isset($_SESSION["success"])) {
                         </form>
                         <?php endif; 
                         // Check if the current user is the one who posted the job
-                        if (isset($_SESSION["userid"]) && $_SESSION["userid"] == $job['users_id'] && isset($_SESSION["isEmployer"]) && $_SESSION["isEmployer"] == 1): ?>
+                        if (isset($_SESSION["userid"]) && $_SESSION["userid"] == $job->users_id && isset($_SESSION["isEmployer"]) && $_SESSION["isEmployer"] == 1): ?>
+                        <!-- if (isset($_SESSION["userid"]) && $_SESSION["userid"] == $job['users_id'] && isset($_SESSION["isEmployer"]) && $_SESSION["isEmployer"] == 1): ?> -->
                             <form action="includes/delete_job.inc.php" method="post">
                                 <input type="hidden" name="job_id" value="<?php echo $job['job_id']; ?>">
                                 <button type="submit" class="deleteBtn">DELETE</button>
