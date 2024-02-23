@@ -168,6 +168,7 @@ button:hover:before {
     align-items: flex-start;
     background-color: var(--job-card-bg);
     border: 2px solid var(--job-card-border);
+    border-radius: 15px;
     color: var(--job-card-text);
     padding: 10px;
     transition: transform 0.4s;
