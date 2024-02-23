@@ -59,7 +59,7 @@ class SignupContr extends Signup
 
     private function emptyInput()
     {
-        $result;
+
         if (empty($this->uname) || empty($this->email) || empty($this->password) || empty($this->confirm_password)) {
             $result = false;
         } else {
@@ -70,7 +70,7 @@ class SignupContr extends Signup
 
     private function invalidUname()
     {
-        $result;
+
         if (!preg_match("/^[a-zA-Z0-9]*$/", $this->uname)) {
             $result = false;
         } else {
@@ -81,7 +81,6 @@ class SignupContr extends Signup
 
     private function invalidEmail()
     {
-        $result;
         if (!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
             $result = false;
         } else {
@@ -92,7 +91,7 @@ class SignupContr extends Signup
 
     private function passwordMatch()
     {
-        $result;
+
         if ($this->password !== $this->confirm_password) {
             $result = false;
         } else {
@@ -103,7 +102,7 @@ class SignupContr extends Signup
 
     private function unameTakenController()
     {
-        $result;
+
         if (!$this->checkUser($this->uname, $this->email)) {
             $result = false;
         } else {
@@ -113,7 +112,7 @@ class SignupContr extends Signup
     }
     private function tooLongUname()
     {
-        $result;
+
         if (strlen($this->uname) > 16) {
             $result = false;
         } else {
@@ -123,7 +122,7 @@ class SignupContr extends Signup
     }
     private function shortPass()
     {
-        $result;
+
         if (strlen($this->password) < 8) {
             $result = false;
         } else {
