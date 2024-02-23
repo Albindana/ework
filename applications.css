@@ -234,7 +234,7 @@ input[type=submit] {
   /* Modal Content */
   .modal-content {
     background-color: #141515;
-    margin: 15% auto; /* 15% from the top and centered */
+    margin: 3% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
     border-radius: 10px;
@@ -251,7 +251,7 @@ input[type=submit] {
   
   .close:hover,
   .close:focus {
-    color: black;
+    color: rgb(147, 0, 0);
     text-decoration: none;
     cursor: pointer;
   }
