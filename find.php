@@ -109,12 +109,12 @@ if (isset($_SESSION["success"])) {
             <div class="error-message">
                 <?php echo $error_message; ?>
             </div>
-            <?php endif; ?>
-            <?php if (isset($success_message)): ?>
-                <div class="success-message">
-                    <?php echo $success_message; ?>
-                </div>
-                <?php endif; ?>
+        <?php endif; ?>
+        <?php if (isset($success_message)): ?>
+            <div class="success-message">
+                <?php echo $success_message; ?>
+            </div>
+        <?php endif; ?>
                 
                 
                 
@@ -147,7 +147,7 @@ if (isset($_SESSION["success"])) {
                             <p><strong>Pay/Income:</strong> <?php echo htmlspecialchars($row['job_income']); ?></p>
                         </div>
                         <div class="p-img">
-                        <?php if (isset($_SESSION["isEmployer"]) && $_SESSION["isEmployer"] != 1): ?>
+                            <?php if (isset($_SESSION["isEmployer"]) && $_SESSION["isEmployer"] != 1): ?>
                             <form action="includes/apply_job.inc.php" method="post">
                                 <input type="hidden" name="job_id" value="<?php echo $job['job_id']; ?>">
                                 <button type="submit" class="submitBtn">APPLY NOW!</button>
@@ -166,16 +166,17 @@ if (isset($_SESSION["success"])) {
             <?php foreach ($jobs as $job): ?>
                 <div class="job-card">
                     <div class="p-info">
-                        <h3><?php echo htmlspecialchars($job['job_title']); ?></h3>
+                        <h2><?php echo htmlspecialchars($job['job_title']); ?></h2>
                         <div style="display:flex;justify-content:space-between;width:100%;">
-                            
+                            <p><strong>Posted by:</strong> <?php echo htmlspecialchars($job['users_uname']); ?></p>
                             <p><strong>Company Name:</strong> <?php echo htmlspecialchars($job['job_compname']); ?></p>
                         </div>
+                        <hr>
                         <p><strong>Description:</strong> <?php echo htmlspecialchars(mb_strimwidth($job['job_description'], 0, 80, "...")); ?></p>
                         <p><strong>Skills:</strong> <?php echo htmlspecialchars(mb_strimwidth($job['job_skills'], 0, 80, "...")); ?></p>
                         <p><strong>Pay/Income:</strong> <?php echo htmlspecialchars($job['job_income']); ?></p>
                     </div>
-                    <div class="p-img">
+                    <!-- <div class="p-img"> -->
                     <?php if (isset($_SESSION["isEmployer"]) && $_SESSION["isEmployer"] != 1): ?>
                         <form action="includes/apply_job.inc.php" method="post">
                             <input type="hidden" name="job_id" value="<?php echo $job['job_id']; ?>">
@@ -189,7 +190,7 @@ if (isset($_SESSION["success"])) {
                                 <button type="submit" class="deleteBtn">DELETE</button>
                             </form>
                         <?php endif; ?>
-                    </div>
+                    <!-- </div> -->
                 </div>
             <?php endforeach; ?>
         </div>
