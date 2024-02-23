@@ -130,4 +130,5 @@ class SignupContr extends Signup
         }
         return $result;
     }
+
 }
