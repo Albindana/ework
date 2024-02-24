@@ -98,7 +98,7 @@ if (isset($_SESSION["success"])) {
         <div class="search">
             <form actiion='' method="post">
                 <input type="text" name="search" id="skillsInput" oninput="showSuggestions()" class="searchTerm" placeholder="Looking for a specific job? Search here.">
-                <button type="submit" name="search-submit" class="searchButton">
+                <button type="submit" name="search-submit" class="searchButton" style="display: none;">
                     
                 </button>
             </form>
