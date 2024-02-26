@@ -33,6 +33,7 @@ if (isset($_SESSION["success"])) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="find.css"/>
+    <link rel="stylesheet" href="responsive.css" />
     <title>Find Jobs</title>
     <script src="toggle-script.js" defer></script>
 </head>

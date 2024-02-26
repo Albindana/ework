@@ -14,6 +14,7 @@ include 'classes/job.classes.php';
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="responsive.css" />
     <title>eWork Home</title>
     <script src="toggle-script.js" defer></script>
 </head>

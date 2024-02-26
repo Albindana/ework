@@ -157,7 +157,7 @@ button:hover:before {
     max-width: 100%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    /* justify-content: flex-start; */
     margin: 20px;
     gap: 20px;
 }
@@ -165,6 +165,8 @@ button:hover:before {
 .job-card {
     flex: 1 0 calc(33.33% - 40px);
     max-width: calc(34% - 40px);
+    height: auto;
+    min-height: 250px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -175,8 +177,6 @@ button:hover:before {
     color: var(--job-card-text);
     padding: 10px;
     transition: transform 0.4s;
-    height: auto;
-    min-height: 250px;
     box-sizing: border-box;
     overflow: hidden;
 }
@@ -202,8 +202,8 @@ button:hover:before {
 
 .searchTerm {
     text-align: center;
-    background-color: var(--search-input-bg);
-    width: 100%;
+    background-color: black;
+    /* background-color: var(--search-input-bg); */
     border: none;
     border-bottom: 3px solid var(--search-input-border);
     padding: 10px;
@@ -345,15 +345,8 @@ select {
     font-size: 40px;
 }
 
-.job-container {
-    max-width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    margin: 20px;
-    gap: 20px;
-}
 
+/* 
 .job-card {
     flex: 1 0 calc(33.33% - 40px);
     max-width: calc(34% - 40px);
@@ -382,7 +375,7 @@ select {
 
 .job-card p {
     margin: 10px 0;
-}
+} */
 
 /* Profile Image Styles */
 .p-info {
@@ -423,11 +416,7 @@ select {
 } */
 
 /* Search Bar Styles */
-.search {
-    width: 100%;
-    position: relative;
-    display: flex;
-}
+
 
 .searchTerm {
     text-align: center;

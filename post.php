@@ -39,6 +39,7 @@ $jobs = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="post.css"/>
+    <link rel="stylesheet" href="responsive.css" />
     <title>Post Jobs</title>
     <script src="toggle-script.js" defer></script>
 </head>
