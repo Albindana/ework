@@ -30,6 +30,15 @@ $degree = $cv[0]['cv_degree'];
 $country = $cv[0]['cv_country'];
 $city = $cv[0]['cv_city'];
 $usersEmail = $user['users_email'];
+
+if (isset($_SESSION["error"])) {
+    $error_message = $_SESSION["error"];
+    unset($_SESSION["error"]);
+}
+if (isset($_SESSION["success"])) {
+    $success_message = $_SESSION["success"];
+    unset($_SESSION["success"]);
+}
 ?>
 
 <!DOCTYPE html>
@@ -45,14 +54,16 @@ $usersEmail = $user['users_email'];
 
     <div class="container">
         <div class="head">
-            <img>
-            <p>
-                <?php if (isset($_SESSION['cv_city'])) {
-                    echo $_SESSION['cv_city'];
-                } else {
-                    echo 'City not set';
-                } ?>
-            </p>
+            <?php if (isset($error_message)): ?>
+                <div class="error-message">
+                    <?php echo $error_message; ?>
+                </div>
+            <?php endif; ?>
+            <?php if (isset($success_message)): ?>
+                <div class="success-message">
+                    <?php echo $success_message; ?>
+                </div>
+            <?php endif; ?>
 
         </div>
         <form action="includes/cv.inc.php" method="post" enctype="multipart/form-data">

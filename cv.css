@@ -20,3 +20,16 @@
     object-fit: cover;
     margin-top: 10px;
 }
+
+.error-message {
+    color: #B22222;
+    font-weight: bold;
+    text-align: center;
+}
+
+.success-message {
+    color: green;
+    font-weight: bold;
+    text-align: center;
+}
+
