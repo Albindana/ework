@@ -16,6 +16,7 @@ body {
     font-family: 'IBM Plex Sans', sans-serif;
     margin: 0;
     padding: 0;
+    height: 130vh
 }
 
 header {
@@ -67,19 +68,21 @@ nav {
 .container {
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-grow: 1;
     height: 50vh;
     width: 80vw;
     margin: auto;
     margin-top: 100px;
-    margin-bottom: 200px !important;
+    margin-bottom: 100px !important;
 }
 
 .form-container {
-    background-color: var(--input-color);
+    /* background-color: var(--input-color); */
     width: 35vw;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
     margin: 20px;
 }
 
@@ -216,18 +219,10 @@ body {
     min-height: 100vh;
     margin: 0;
     padding: 0;
-    position: relative;
+    /* position: relative; */
 }
-
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-grow: 1;
-}
-
 footer {
-    position: fixed;
+    position: relative;
     bottom: 0px;
     width: 100%;
     background-color: var(--text-color);
@@ -319,12 +314,6 @@ form input[type="submit"]:hover {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-}
-
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .form-container h1 {

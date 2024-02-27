@@ -14,8 +14,5 @@ class Role extends Dbh {
         $result = $stmt->execute([$userId]);
         
     }
-    
-    
-    
 }
 ?>

@@ -37,6 +37,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="profile.css"/>
+    <link rel="stylesheet" href="responsive.css"/>
     <title>Your Profile</title>
     <script src="toggle-script.js" defer></script>
 </head>
@@ -97,44 +98,59 @@
             <!-- Day or Night button -->
         </div>
     </header>
-            <body>
-            <div class="container">
-                    <div class="form-container">
-                <h1>Profile</h1>
-                <form action="includes/change_role.inc.php" method="post">
-                    <div class="toggle-container">
-                        <h3>Employer Mode</h3>
-                        <label class="switch">
-                        <input type="checkbox" name="employerMode" onchange="this.form.submit()" <?php echo isset($_SESSION['isEmployer']) && $_SESSION['isEmployer'] == 1 ? 'checked' : ''; ?>>
-                            <span class="slider round"></span>
-                        </label>
-                        <input type="hidden" name="userId" value="<?php echo $_SESSION['userid']; ?>">
-                    </div>
-                </form>
+            
+        <div class="container profile-container">
+            <div class="form-container">
+                    <h1>Profile</h1>
+                    <form action="includes/change_role.inc.php" method="post">
+                            <div class="toggle-container">
+                                <h3>Employer Mode</h3>
+                                <label class="switch">
+                                <input type="checkbox" name="employerMode" onchange="this.form.submit()" <?php echo isset($_SESSION['isEmployer']) && $_SESSION['isEmployer'] == 1 ? 'checked' : ''; ?>>
+                                    <span class="slider round"></span>
+                                </label>
+                                <input type="hidden" name="userId" value="<?php echo $_SESSION['userid']; ?>">
+                            </div>
+                    </form>
 
-                <h2>Your Information</h2>
-              
-                <h3 class="user-info" name="uname">Username: <?php echo $user["users_uname"]; ?></h3>
-                <h3 class="user-info" name="uemail">Email: <?php echo $user["users_email"]; ?></h3>
+                    <h2>Your Information</h2>
+                    
+                    <h3 class="user-info" name="uname">Username: <?php echo $user["users_uname"]; ?></h3>
+                    <h3 class="user-info" name="uemail">Email: <?php echo $user["users_email"]; ?></h3>
 
 
-                <h2>Change Username or Password</h2>
-                <?php if (isset($error_message)): ?>
-                    <div class="error-message">
-                        <?php echo $error_message; ?>
-                    </div>
-                <?php endif; ?>
-                <form id="changeForm" action="includes/change_profile.inc.php" method="post">
-                    <label id="oldPass" for="old_password">Your Password:</label>
-                    <input type="password" id="old_password" name="old_password">
-                    <label id="newName" for="new_username">New Username:</label>
-                    <input type="text" id="new_username" name="new_username">
-                    <label id="newPass" for="new_password">New Password:</label>
-                    <input type="password" id="new_password" name="new_password">
-                    <input type="submit" value="Submit">
-                </form>
-                </div>
-                
-            </body>
+                    <h2>Change Username or Password</h2>
+                        <?php if (isset($error_message)): ?>
+                            <div class="error-message">
+                                <?php echo $error_message; ?>
+                            </div>
+                        <?php endif; ?>
+                    <form id="changeForm" action="includes/change_profile.inc.php" method="post">
+                            <label id="oldPass" for="old_password">Your Password:</label>
+                            <input type="password" id="old_password" name="old_password">
+                            <label id="newName" for="new_username">New Username:</label>
+                            <input type="text" id="new_username" name="new_username">
+                            <label id="newPass" for="new_password">New Password:</label>
+                            <input type="password" id="new_password" name="new_password">
+                            <input type="submit" value="Submit">
+                    </form>
+            </div>
+        </div>
+        <footer>
+        <div class="content">
+            <div class="ubt">
+                <p>Ky projekt u punua per lenden "Inxhinieri e Kerkesave Softuerike"</p>
+            </div>
+            <div class="about">
+                <a>About us</a>
+            </div>
+        </div>
+        <div class="cp">
+            <div class="copyright">
+                <p>© Copyright - all rights reserved: Albin Dana, Semi Zhuri, Andi Morina</p>
+            </div>
+        </div>
+    </footer>
+    </body>
 
 </html>

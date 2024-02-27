@@ -39,11 +39,11 @@ class Profile extends Dbh {
     }
         
     protected function validateOldPassword($password) {
-            $stmt = $this->connect()->prepare('SELECT users_password FROM users WHERE users_id = ?;');
-            $stmt->execute(array($_SESSION["userid"]));
-            $old_password = $stmt->fetch(PDO::FETCH_ASSOC)["users_password"];
+        $stmt = $this->connect()->prepare('SELECT users_password FROM users WHERE users_id = ?;');
+        $stmt->execute(array($_SESSION["userid"]));
+        $old_password = $stmt->fetch(PDO::FETCH_ASSOC)["users_password"];
         
-            return password_verify($password, $old_password);
-        }
+        return password_verify($password, $old_password);
+    }
         
 }

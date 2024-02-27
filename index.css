@@ -1,5 +1,5 @@
 :root {
-    --background-color: #f4fff4;
+    --background-color: #fbfbfb;
     --border-color: #18FF27;
     --text-color: #18BA27;
     --button-bg: #007bff;
@@ -32,8 +32,8 @@ header {
 .header-main {
     padding: 0px;
     width: 70%;
-    justify-content: space-around;
     display: flex;
+    justify-content: space-around;
     text-align: center;
     align-items: center;
     color: var(--text-color);
@@ -258,7 +258,7 @@ h3 a:not(.current):hover::before {
 }
 
 .current {
-    color: #baffba;
+    color: var(--border-color);
 }
 
 /* Button styles */
