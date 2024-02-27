@@ -2,7 +2,6 @@
 session_start();
 include_once '../classes/dbh.classes.php';
 require_once '../classes/cv.classes.php';
-require_once '../classes/cv-controller.classes.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -43,14 +42,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     try {
-        $cv = new CvContr($userId, $motivationalLetter, $skills, $address, $phoneNumber, $country, $city, $degree, $imageDestination); // Use CvContr instead of Cv
-        $cv->createOrUpdateCv(); // Use createOrUpdateCv instead of insertCv
-        echo 'The CV has been updated successfully.';
+        $cv = new Cv($userId, $motivationalLetter, $skills, $address, $phoneNumber, $country, $city, $degree, $imageDestination); // Use CvContr instead of Cv
+        $cv->insertCv();
+        $_SESSION["success"] = "Cv Uploaded Successfully";
+        header('location: ../cv.php');
     } catch (Exception $e) {
-        echo 'An error occurred while updating the CV: ' . $e->getMessage();
+        $_SESSION["error"] = 'An error occurred while updating the CV: ' . $e->getMessage();
     }
 } else {
-    echo 'Error: The form was not submitted correctly.';
+    $_SESSION["error"] = 'Error: The form was not submitted correctly.';
 }
 
 header('location: ../cv.php');
