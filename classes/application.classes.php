@@ -50,6 +50,8 @@ class Application extends Dbh
             exit();
         } else {
             $_SESSION["error"] = "You should upload your CV first!";
+            header("location: ../find.php");
+            exit();
         }
 
 

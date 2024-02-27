@@ -6,8 +6,6 @@ require_once 'classes/cv.classes.php';
 if (isset($_SESSION["userid"])) {
 
     $userId = $_SESSION["userid"];
-    // $cv = new Cv($userId);
-    // $cvData = $userId->getCv();
 }
 $db = new Dbh();
 $pdo = $db->connect();
