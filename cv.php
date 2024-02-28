@@ -2,6 +2,7 @@
 
 session_start();
 include 'classes/dbh.classes.php';
+include 'classes/job.classes.php';
 require_once 'classes/cv.classes.php';
 if (isset($_SESSION["userid"])) {
 
@@ -50,6 +51,16 @@ if (isset($_SESSION["success"])) {
 
 <body class="d-flex flex-column align-items-center justify-content-center vh-100">
 
+<header style="width:100%; text-align:center;" >
+        <div class="header-main d-flex flex-row align-items-center justify-content-space-between" style="width:100%;text-align:center;" >
+            <div class="logo">
+                <h1>eWork</h1>
+            </div>
+            <nav>
+                <h3><a class="current" href="index.php">HOME</a></h3>                               
+            </div>
+        </div>
+</header>
     <div class="container">
         <div class="head">
             <?php if (isset($error_message)): ?>

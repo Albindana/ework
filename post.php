@@ -138,7 +138,7 @@ $jobs = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
         <?php } ?>
     </div>
-                <script>
+        <script>
             window.addEventListener('DOMContentLoaded', (event) => {
                 document.querySelectorAll('textarea').forEach(function(textarea) {
                     textarea.addEventListener('input', autoResize, false);
@@ -149,7 +149,7 @@ $jobs = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     this.style.height = this.scrollHeight + 'px';
                 }
             });
-            </script>
+        </script>
 
     <script src="post.js"></script>
     
