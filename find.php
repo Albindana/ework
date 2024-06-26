@@ -139,7 +139,7 @@ if (isset($_SESSION["success"])) {
                 $stmt2->execute();
                 $srchResult = $stmt2->fetchAll(PDO::FETCH_ASSOC);
                 if ($stmt2->rowCount() == 0) {
-                    echo "<div style='width:100%;display:flex;justify-content:center;'><h1>No data found.</h1></div>";
+                    echo "<div style='width:100%;display:flex;justify-content:center;'><h1>No jobs found.</h1></div>";
                 } else {
 
 
