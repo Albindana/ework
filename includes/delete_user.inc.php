@@ -15,6 +15,10 @@ if (isset($_POST['userId'])) {
         $stmt = $db->prepare('DELETE FROM applications WHERE user_id = ?');
         $stmt->execute([$userId]);
 
+        // Delete the user
+        $stmt = $db->prepare('DELETE FROM cv WHERE users_id = ?');
+        $stmt->execute([$userId]);
+
         // Delete associated records in the jobs table
         $stmt = $db->prepare('DELETE FROM jobs WHERE users_id = ?');
         $stmt->execute([$userId]);
