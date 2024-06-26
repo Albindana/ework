@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 include 'classes/dbh.classes.php';
 require_once 'classes/cv.classes.php';
@@ -49,6 +48,9 @@ if (isset($_SESSION["success"])) {
 </head>
 
 <body class="d-flex flex-column align-items-center justify-content-center vh-100">
+    <div class="header">
+        <a href="index.php">Return</a>
+    </div> 
 
     <div class="container">
         <div class="head">
