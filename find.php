@@ -215,15 +215,7 @@ if (isset($_SESSION["success"])) {
                                 <input type="hidden" name="job_id" value="<?php echo $job['job_id']; ?>">
                                 <button type="submit" class="submitBtn">APPLY NOW!</button>
                             </form>
-                        <?php endif;
-                        // Check if the current user is the one who posted the job
-                        if (isset($_SESSION["userid"]) && $_SESSION["userid"] == $job['users_id'] && isset($_SESSION["isEmployer"]) && $_SESSION["isEmployer"] == 1): ?>
-                            <form action="includes/delete_job.inc.php" method="post">
-                                <input type="hidden" name="job_id" value="<?php echo $job['job_id']; ?>">
-                                <button type="submit" class="deleteBtn">DELETE</button>
-                            </form>
                         <?php endif; ?>
-                        <!-- </div> -->
                     </div>
                 <?php endforeach; ?>
             </div>

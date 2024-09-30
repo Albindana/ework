@@ -1,159 +1,158 @@
-:root {
-    --background-color: #f4fff4;
-    --border-color: #18FF27;
-    --text-color: #18BA27;
-    --button-bg: #006c0b;
-    --button-hover-bg: transparent;
-    --button-hover-text: #18BA27;
-    --bigger-text-color: #006c0b;
-    --big-text-color: #18BA27;
-    --btn-background: #cdffcd;
-    --input-color: #98ff98;
-}
-
-*{
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     font-family: 'IBM Plex Sans', sans-serif;
 }
 
 body {
     overflow-x: hidden;
-    background-color: var(--background-color);
+    background-color: #0d0e0e;
     color: white;
-    text-align: center;
     width: 100%;
 }
 
-header {
-    width: 100%;
+.wrapper {
+    height: 100%;
+    width: 270px;
+    position: fixed;
+    top: 0;
+    left: -270px;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+#btn:checked ~ .wrapper {
+    left: 0;
+}
+
+.wrapper .menu-btn {
+    position: absolute;
+    left: 270px;
+    top: 10px;
+    background: #4a4a4a;
+    color: #fff;
+    height: 45px;
+    width: 45px;
+    z-index: 1001;
+    border: 1px solid #333;
+    border-radius: 5px;
+    cursor: pointer;
     display: flex;
+    align-items: center;
     justify-content: center;
-    border-bottom: 1px solid var(--border-color);
-    align-items: center;
+    transition: all 0.3s ease;
 }
 
-.header-main {
-    width: 70%;
-    justify-content: space-around;
-    display: flex;
+#sidebar {
+    background: #404040;
+    height: 100%;
+    width: 270px;
+}
+
+#sidebar .logo {
+    line-height: 65px;
     text-align: center;
-    align-items: center;
-    color: var(--big-text-color);
+    background: #333;
+    font-size: 25px;
+    font-weight: 600;
+    color: #f2f2f2;
+    border-bottom: 1px solid #222;
 }
 
-nav {
-    display: flex;
-    gap: 50px;
+#sidebar .list-items {
+    list-style: none;
+    padding: 0;
 }
 
-.header-main .profile {
-    list-style-type: none;
-    display: flex; 
-    justify-content: flex-end; 
-    align-items: flex-end; 
-    gap: 4px; 
+#sidebar .list-items li {
+    padding: 15px 0;
+    border-bottom: 1px solid #333;
+    transition: all 0.3s ease;
 }
 
-.uname {
-    border: none;
-    background-color: transparent;
-    color: var(--text-color);
-    font-family: 'IBM Plex Sans', sans-serif;
+#sidebar .list-items li:hover {
+    background: #4a4a4a;
 }
 
-.header-login-a{
-    border: none;
-    background-color: var(--text-color);
-    color: var(--background-color);
-}
-
-h3 a {
+#sidebar .list-items li a {
+    color: #f2f2f2;
     text-decoration: none;
-    position: relative;
-    color: var(--big-text-color);
-}
-
-h3 a:not(.current)::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -6px;
-    width: 0;
-    height: 2px;
-    background-color: var(--big-text-color);
-    transition: width 0.3s ease;
-}
-
-h3 a:not(.current):hover::before {
+    font-size: 18px;
+    font-weight: 500;
+    height: 100%;
     width: 100%;
+    display: block;
+    padding-left: 20px;
 }
 
-h3 a:hover {
-    color: var(--big-text-color);
-}
-
-.current {
-    color: #baffba;
-}
-
-.current:hover {
-    color: #baffba;
-}
-
-
-button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: var(--button-bg);
-    color: var(--background-color);
-    text-decoration: none;
-    position: relative;
-    font-weight: bold;
-    font-size: 15px;
-    overflow: hidden;
-    transition: background-color 1s ease, color 1s ease;
-    font-family: 'IBM Plex Sans', sans-serif;
-}
-
-button:before {
-    content: '';
+.profile {
     position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 0;
-    height: 3px;
-    background-color: var(--text-color);
-    transition: width 0.7s ease;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
 }
 
-button:hover {
-    background-color: var(--button-hover-bg);
-    color: var(--button-hover-text);
-}
-
-button:hover:before {
+.profile button {
     width: 100%;
+    margin-bottom: 10px;
 }
 
-nav {
-    display: flex;
-    gap: 40px;
+.content {
+    margin-left: 0;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+#btn:checked ~ .content {
+    margin-left: 270px;
+}
+
+.users, .jobs {
+    margin: 50px 0;
 }
 
 h1 {
     font-size: 2em;
-    color: var(--text-color);
+    text-align: center;
+    margin: 10px;
 }
 
-input[type=submit] {
-    width: 100px;
-    height: 30px;
-    border-radius: 5px;
+table {
+    margin: 0 auto;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 2px solid #5a5d5f;
+    border-radius: 8px;
+    background-color: #141515;
+}
+
+th, td {
+    width: 130px;
+    text-align: center;
+    border: 1px solid #5a5d5f;
+    padding: 10px;
+}
+
+button {
+    width: 100px; 
+    height: 30px; 
+    border-radius: 20px; 
     border: none;
-    color: #d6d4d2;
+    outline: none;
+    margin-bottom: 3px;
+    transition: transform .2s;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: bold;
+}
+
+button:hover {
+    transform: scale(1.1);
 }
 
 .delete {
     background-color: rgb(116, 24, 24);
+    color: white;
 }
 
 .delete:hover {
@@ -162,130 +161,19 @@ input[type=submit] {
 
 .admin {
     background-color: rgb(84, 138, 67);
+    color: white;
 }
 
 .admin:hover {
     background-color: rgb(105, 165, 87);
 }
-.jobs-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+
+.uname, .header-login-a {
+    background-color: #0d0e0e;
+    color: #ececec;
 }
 
-.job {
-    display: flex;
-    align-items: center; 
-    justify-content: center;
-    margin: 7px;
-    border: 2px solid #5a5d5f;
-    border-radius: 50px;
-    padding: 10px; 
-    box-sizing: border-box;
-    background-color: #141515;
-    cursor: pointer;
-    height: 40px; 
-    width: fit-content; 
-    min-width: 60px; 
-    font-size: 0.5em; 
-    transition: 0.3s ease; 
+.lg, .si {
+    background-color: #4a4a4a;
+    color: #ececec;
 }
-
-#applicants-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start
-}
-
-.application {
-    flex-basis: calc(25% - 130px); 
-    margin: 10px;
-    border: 3px solid #5a5d5f;
-    border-radius: 8px;
-    padding: 10px;
-    box-sizing: border-box;
-    background-color: #141515;
-    transition: 0.3s ease; 
-} 
-
-.job.active, .application.active {
-    background-color: rgb(84, 138, 67);
-    border-color: rgb(38, 88, 23); 
-}
-
-.jobs-container .job:hover, #applicants-container .application:hover {
-    transform: scale(1.05);
-    cursor: pointer;
-}
-
-/* The Modal (background) */
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  }
-  
-  /* Modal Content */
-  .modal-content {
-    background-color: #141515;
-    margin: 3% auto; /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid #888;
-    border-radius: 10px;
-    width: 50%; /* Could be more or less, depending on screen size */
-  }
-  
-  /* The Close Button */
-  .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
-    color: rgb(147, 0, 0);
-    text-decoration: none;
-    cursor: pointer;
-  }
-  
-
-  .cv-image {
-    width: 100px; /* Adjust as needed */
-    height: 100px; /* Adjust as needed */
-    border-radius: 50%; /* This makes the image round */
-    object-fit: cover; /* This ensures the image covers the entire area without distortion */
-}
-
-/* day night button */
-
-.dayNightBtn {
-    color: var(--text-color);
-    border: none;
-    background-color: transparent;
-
-    transition: transform 0.3s ease;
-}
-
-.dayNightBtn:hover {
-    transform: scale(1.3);
-    cursor: pointer;
-}
-
-.dayNightBtn:hover:before {
-    width: 0;
-}
-
-/* day night button */
-
-.about a , .ubt , .copyright{
-    color: white;
-}
-
