@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 include 'classes/dbh.classes.php';
 include 'classes/job.classes.php';
@@ -50,6 +49,9 @@ if (isset($_SESSION["success"])) {
 </head>
 
 <body class="d-flex flex-column align-items-center justify-content-center vh-100">
+    <div class="header">
+        <a href="index.php">Return</a>
+    </div> 
 
 <header style="width:100%; text-align:center;" >
         <div class="header-main d-flex flex-row align-items-center justify-content-space-between" style="width:100%;text-align:center;" >
