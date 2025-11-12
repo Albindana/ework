@@ -188,17 +188,6 @@ include 'classes/job.classes.php';
                     <h3 class="feature-title">Service Award</h3>
                     <p class="feature-description">Recognized for excellence in connecting talent with opportunity</p>
                 </div>
-                <div class="feature-card">
-                    <svg class="feature-card-decoration" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="50" cy="30" r="15" fill="none" stroke="rgba(20,168,0,0.08)" stroke-width="1.5"/>
-                        <path d="M30,60 Q50,50 70,60" fill="none" stroke="rgba(20,168,0,0.08)" stroke-width="1.5"/>
-                    </svg>
-                    <div class="feature-icon">
-                        <img src="images/guarantee-certificate_3734879.png" alt="Satisfaction Guaranteed">
-                    </div>
-                    <h3 class="feature-title">Satisfaction Guaranteed</h3>
-                    <p class="feature-description">We're committed to your success and satisfaction</p>
-                </div>
             </div>
         </div>
     </section>
