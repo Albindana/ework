@@ -1,35 +1,391 @@
-@media screen and (max-width: 728px){
-    /* --------- navigation --------- */
-    header{
-        margin-bottom: 50px;
-    }
-    .header-main{
-        flex-direction: column;
-        
-    }
-    nav{
-        flex-direction: column;
-        margin-top: 20px;
-        margin-bottom: 20px;
-    }
-    /* --------find page ----------- */
-    .job-container{
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-    .job-card{
-        flex:auto;
-        min-width:80%;
-    }
+/* Responsive Design for eWork - Modern Layout */
 
-    /* ------ profile page -------- */
-    .profile-container{
-        width: 80vw;
+/* Tablet and Medium Screens */
+@media screen and (max-width: 1024px) {
+    .container {
+        padding: 0 1.5rem;
     }
-    .form-container{
+    
+    .header-container {
+        padding: 1rem 1.5rem;
+    }
+    
+    .main-nav {
+        gap: 1.5rem;
+    }
+    
+    .hero-content {
+        padding: 1.5rem;
+    }
+    
+    .hero-title {
+        font-size: 2.75rem;
+    }
+    
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .eligibility-content {
+        gap: 3rem;
+    }
+}
+
+/* Mobile and Small Screens */
+@media screen and (max-width: 768px) {
+    /* Header */
+    .main-header {
+        position: relative;
+    }
+    
+    .header-container {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem;
+        gap: 1rem;
+    }
+    
+    .logo {
         width: 100%;
     }
+    
+    .logo h1 {
+        font-size: 1.5rem;
+    }
+    
+    .main-nav {
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1rem;
+        order: 2;
+        margin-top: 0.5rem;
+    }
+    
+    .nav-link {
+        font-size: 0.85rem;
+        padding: 0.4rem 0;
+    }
+    
+    .header-actions {
+        width: 100%;
+        justify-content: space-between;
+        order: 3;
+        margin-top: 0.5rem;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+    
+    .btn-primary,
+    .btn-secondary,
+    .btn-profile {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+        flex: 1;
+        min-width: 100px;
+    }
+    
+    .dnDiv {
+        margin-left: auto;
+    }
+    
+    /* Hero Section */
+    .hero-section {
+        min-height: 500px;
+    }
+    
+    .hero-content {
+        padding: 1rem;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+    
+    .hero-cta {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+    
+    .btn-hero-primary,
+    .btn-hero-secondary {
+        width: 100%;
+        padding: 0.875rem 2rem;
+        font-size: 0.95rem;
+    }
+    
+    /* Features Section */
+    .features-section {
+        padding: 4rem 0;
+    }
+    
+    .section-header {
+        margin-bottom: 3rem;
+        padding: 0 1rem;
+    }
+    
+    .section-title {
+        font-size: 1.75rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .section-description {
+        font-size: 1rem;
+    }
+    
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin-top: 2rem;
+    }
+    
+    .feature-card {
+        padding: 2rem 1.5rem;
+    }
+    
+    .feature-icon {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 1.25rem;
+    }
+    
+    .feature-icon img {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .feature-title {
+        font-size: 1.1rem;
+    }
+    
+    .feature-description {
+        font-size: 0.9rem;
+    }
+    
+    /* Eligibility Section */
+    .eligibility-section {
+        padding: 4rem 0;
+    }
+    
+    .eligibility-content {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+    
+    .eligibility-title {
+        font-size: 1.75rem;
+        margin-bottom: 1.5rem;
+        text-align: center;
+    }
+    
+    .motto-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .motto-item {
+        padding: 1.25rem;
+    }
+    
+    .motto-item h3 {
+        font-size: 1.25rem;
+    }
+    
+    .motto-item p {
+        font-size: 0.85rem;
+    }
+    
+    .eligibility-description {
+        font-size: 1rem;
+        text-align: center;
+        margin-bottom: 1.5rem;
+    }
+    
+    .btn-primary-large {
+        width: 100%;
+        text-align: center;
+        padding: 0.875rem 2rem;
+    }
+    
+    .testimonial-card {
+        padding: 1.5rem;
+        max-width: 100%;
+    }
+    
+    .testimonial-image img {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .testimonial-info h4 {
+        font-size: 1.25rem;
+    }
+    
+    /* Stats Section */
+    .stats-section {
+        padding: 4rem 0;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+    
+    .stat-number {
+        font-size: 2.25rem;
+    }
+    
+    .stat-label {
+        font-size: 1rem;
+    }
+    
+    /* Footer */
+    .main-footer {
+        padding: 3rem 0 1.5rem;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin-bottom: 2rem;
+    }
+    
+    .footer-section {
+        text-align: center;
+    }
+    
+    .footer-logo {
+        font-size: 1.5rem;
+    }
+    
+    .footer-title {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .footer-links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .footer-bottom {
+        padding-top: 1.5rem;
+        font-size: 0.85rem;
+    }
+}
 
+/* Extra Small Screens */
+@media screen and (max-width: 480px) {
+    .container {
+        padding: 0 1rem;
+    }
+    
+    .header-container {
+        padding: 0.75rem;
+    }
+    
+    .main-nav {
+        gap: 0.75rem;
+    }
+    
+    .nav-link {
+        font-size: 0.8rem;
+    }
+    
+    .btn-primary,
+    .btn-secondary,
+    .btn-profile {
+        padding: 0.45rem 0.75rem;
+        font-size: 0.8rem;
+    }
+    
+    .hero-title {
+        font-size: 1.75rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 0.9rem;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+    }
+    
+    .eligibility-title {
+        font-size: 1.5rem;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+    }
+}
 
+/* Landscape Orientation for Mobile */
+@media screen and (max-width: 768px) and (orientation: landscape) {
+    .hero-section {
+        min-height: 400px;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .features-section,
+    .eligibility-section {
+        padding: 3rem 0;
+    }
+}
+
+/* High DPI Displays */
+@media screen and (-webkit-min-device-pixel-ratio: 2),
+       screen and (min-resolution: 192dpi) {
+    .feature-icon img,
+    .testimonial-image img {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .main-header,
+    .hero-section,
+    .footer-bottom {
+        display: none;
+    }
+    
+    .features-section,
+    .eligibility-section,
+    .stats-section {
+        page-break-inside: avoid;
+    }
+}
+
+/* Accessibility - Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Dark Mode Support (if needed in future) */
+@media (prefers-color-scheme: dark) {
+    /* Can be extended for dark mode support */
 }
